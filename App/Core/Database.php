@@ -1,6 +1,4 @@
 <?php
-require('config.php');
-
 class database
 {
     //Satus of class
@@ -18,12 +16,15 @@ class database
     protected $limit = 10;
     protected $offset = 0;
 
-    public function __construct($config)
+    public function __construct()
     {
+        require_once('Config.php');
+        $config = Configuration::getConfig();
         $this->host = $config['host'];
         $this->user = $config['user'];
         $this->password = $config['password'];
         $this->db_name = $config['db_name'];
+        print_r($this);
         $this->connect();
     }
 
@@ -108,7 +109,6 @@ class database
         $this->statement->bind_param($dataType, ...$values);
         $this->statement->execute();
         $this->resetQuery();
-
         return $this->statement->affected_rows;
     }
 
