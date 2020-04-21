@@ -1,5 +1,34 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^(.+)$ index.php?url=$1
+#Rus solution-----------------------------------------------
+Options -Indexes
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# Если запрос начинается с /admin, то заменяем на /backend/web/
+RewriteCond %{REQUEST_URI} ^/admin$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin\/?(.*) /Admin/$1
+RewriteCond %{REQUEST_URI} ^/admin/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin\/?(.*) /Admin/$1
+
+# Добавляем другой запрос /frontend/web/$1
+RewriteCond %{REQUEST_URI} !^/(Website|admin)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) /Website/$1
+
+# Если frontend запрос
+RewriteCond %{REQUEST_URI} ^/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /Website/index.php
+
+
+# Если backend запрос
+RewriteCond %{REQUEST_URI} ^/Admin
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /Admin/index.php
