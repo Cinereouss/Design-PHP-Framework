@@ -1,4 +1,3 @@
-
 #Rus solution-----------------------------------------------
 Options -Indexes
 Options +FollowSymLinks
@@ -8,27 +7,27 @@ RewriteEngine on
 # Если запрос начинается с /admin, то заменяем на /backend/web/
 RewriteCond %{REQUEST_URI} ^/admin$
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^admin\/?(.*) /Admin/$1
+RewriteRule ^admin\/?(.*) /backend/$1
 RewriteCond %{REQUEST_URI} ^/admin/
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^admin\/?(.*) /Admin/$1
+RewriteRule ^admin\/?(.*) /backend/$1
 
 # Добавляем другой запрос /frontend/web/$1
-RewriteCond %{REQUEST_URI} !^/(Website|admin)
+RewriteCond %{REQUEST_URI} !^/(frontend|admin)
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) /Website/$1
+RewriteRule (.*) /frontend/$1
 
 # Если frontend запрос
-RewriteCond %{REQUEST_URI} ^/
+RewriteCond %{REQUEST_URI} ^/frontend
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule . /Website/index.php
+RewriteRule ^(.+)$ /frontend/index.php?url=$1
 
 
 # Если backend запрос
-RewriteCond %{REQUEST_URI} ^/Admin
+RewriteCond %{REQUEST_URI} ^/backend
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule . /Admin/index.php
+RewriteRule ^(.+)$ /backend/index.php?url=$1

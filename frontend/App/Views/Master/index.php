@@ -1,27 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@Cinereouss
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-FresherDuong
-/
-front_end_btl_web
-1
-00
-Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights
-front_end_btl_web/index.html
-@FresherDuong FresherDuong polish and add login form
-db1de19 20 hours ago
-501 lines (474 sloc)  26.1 KB
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
