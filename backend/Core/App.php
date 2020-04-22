@@ -1,18 +1,20 @@
 <?php
 class App
 {
-    private $controller = 'OrderController';
+    private $controller = 'HomeController';
     private $action = 'index';
     private $params = [];
 
     public function __construct()
     {
+
         $url = $this->procUrl();
+
         //Router Controller
         unset($url[0]);
         unset($url[1]);
 
-        if(isset($url) && file_exists("./App/Controllers/".$url[2]."Controller.php")){
+        if(count($url)>0 && file_exists("./App/Controllers/".$url[2]."Controller.php")){
             $this->controller = $url[2]."Controller";
             unset($url[2]);
         }

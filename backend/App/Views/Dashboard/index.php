@@ -153,7 +153,7 @@
                 </td>
                 <td>
                     <p style="text-align:justify"><span
-                                style="font-size:14px">&nbsp;Fishman ISYS-T with Chromatic Tuner</span></p>
+                                style="font-size:14px">&nbsp;   Fishman ISYS-T with Chromatic Tuner</span></p>
                 </td>
             </tr>
             <tr>

@@ -10,4 +10,8 @@ class Controller
     public function view($view, $data = []){
         require_once ("./App/Views/".$view."/index.php");
     }
+
+    public function viewItem($view, $item,  $data = []){
+        require_once ("./App/Views/".$view."/".$item.".php");
+    }
 }
