@@ -1,5 +1,5 @@
 <?php
-class HomeModel{
+class ProductModel{
     public function test(){
         return "func test";
     }
