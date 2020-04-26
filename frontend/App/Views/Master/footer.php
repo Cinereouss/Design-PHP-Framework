@@ -1,3 +1,35 @@
+<!-- Newsletter -->
+<section class="section-letter">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                <img id="contact-icon" src="./public/image/contact.svg" alt="contact">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="letter-left col-12 col-lg-6 col-md-6 col-sm-12">
+                <h2>LIÊN HỆ</h2>
+                <p>Chúng tôi sẽ giúp bạn tìm đúng giải pháp cho đam mê của bạn.</p>
+                <button type="button" class="btn btn-secondary btn-lg">GỬI EMAIL</button>
+                <button type="button" class="btn btn-secondary btn-lg">HOTLINE</button>
+            </div>
+            <div class="letter-right col-12 col-lg-6 col-md-6 col-sm-12">
+                <h2>ĐĂNG KÝ NHẬN EMAIL CẬP NHẬT</h2>
+                <p>Để lại email để nhận thông tin mới nhất.</p>
+
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="email" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-secondary mb-2">ĐĂNG KÝ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Newsletter -->
+
 <footer>
     <div class="container">
         <div class="row">
@@ -13,34 +45,26 @@
                 <ul class="social-links">
                     <li>
                         <a href="#"
-                        >
-                            <ion-icon name="logo-facebook" class="logo-facebook"></ion-icon
-                            >
-                        </a>
+                        ><ion-icon name="logo-facebook" class="logo-facebook"></ion-icon
+                            ></a>
                     </li>
                     <li>
                         <a href="#"
-                        >
-                            <ion-icon name="logo-twitter" class="logo-twitter"></ion-icon
-                            >
-                        </a>
+                        ><ion-icon name="logo-twitter" class="logo-twitter"></ion-icon
+                            ></a>
                     </li>
                     <li>
                         <a href="#"
-                        >
-                            <ion-icon name="logo-twitch" class="logo-twitch"></ion-icon
-                            >
-                        </a>
+                        ><ion-icon name="logo-twitch" class="logo-twitch"></ion-icon
+                            ></a>
                     </li>
                     <li>
                         <a href="#"
-                        >
-                            <ion-icon
+                        ><ion-icon
                                     name="logo-instagram"
                                     class="logo-instagram"
                             ></ion-icon
-                            >
-                        </a>
+                            ></a>
                     </li>
                 </ul>
             </div>

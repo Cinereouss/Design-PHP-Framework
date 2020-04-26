@@ -7,21 +7,21 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="./public/image/cover-2.png" alt="First slide">
+                <img class="d-block w-100" src="/public/image/cover-2.png" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>GUITAR - H2D</h5>
                     <p>Cam kết đem lại những lợi ích tốt nhất cho khách hàng</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./public/image/cover-1.png" alt="Second slide">
+                <img class="d-block w-100" src="/public/image/cover-1.png" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>GUITAR - H2D</h5>
                     <p>Cam kết cung cấp sản phẩm chính hãng</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./public/image/cover-ads.png" alt="Third slide">
+                <img class="d-block w-100" src="/public/image/cover-ads.png" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -225,100 +225,100 @@
         <div class="row">
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="./product-detail.html" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
 
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-2.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-2.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="./product-detail.html" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Đàn guitar Suzuki SDG 6NL là đàn guitar suzuki có mức giá thấp,với mức giá
                             này, với kiểu dáng đẹp và âm thanh hay, đây chính là cây đàn guitar sinh viên. Lên dây Gỗ
                             cây Vân Sam</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-2.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-2.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Fender CD-140SCE với nhiều cải tiến mang đến âm thanh tuyệt vời cho người
                             chơi, với 3 màu phù hợp với phong cách nhiều người Tên sản phẩm: Fender CD-140SCE Số
                             hiệu:0962</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="./public/image/product-1.jpg" class="card-img-top" alt="product-1">
+                    <img src="/public/image/product-1.jpg" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title">GREG BENNETT GD-100SCE</h5>
                         <p class="card-title" style="color: red;">Giá: 10.710.000 VNĐ</p>
                         <p class="card-text">Greg Bennett GD-100SCE Electro Acoustic có lối chơi mượt mà và mang hình
                             dáng dreadnought thu hút với thân đàn bằng gỗ Gụ và cần đàn bằng gỗ</p>
-                        <a href="#" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
+                        <a href="/Product" class="btn btn-block btn-warning">Chi tiết sản phẩm</a>
                     </div>
                 </div>
             </div>
@@ -373,35 +373,3 @@
     </div>
 </section>
 <!--End Infor -->
-
-<!-- Newsletter -->
-<section class="section-letter">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
-                <img id="contact-icon" src="./public/image/contact.svg" alt="contact">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="letter-left col-12 col-lg-6 col-md-6 col-sm-12">
-                <h2>LIÊN HỆ</h2>
-                <p>Chúng tôi sẽ giúp bạn tìm đúng giải pháp cho đam mê của bạn.</p>
-                <button type="button" class="btn btn-secondary btn-lg">GỬI EMAIL</button>
-                <button type="button" class="btn btn-secondary btn-lg">HOTLINE</button>
-            </div>
-            <div class="letter-right col-12 col-lg-6 col-md-6 col-sm-12">
-                <h2>ĐĂNG KÝ NHẬN EMAIL CẬP NHẬT</h2>
-                <p>Để lại email để nhận thông tin mới nhất.</p>
-
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                        <input type="email" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-secondary mb-2">ĐĂNG KÝ</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<!--End Newsletter -->
