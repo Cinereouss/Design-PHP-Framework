@@ -1,5 +1,5 @@
 <?php
-class database
+class Model
 {
     //Satus of class
     protected $connection = null;
@@ -18,13 +18,12 @@ class database
 
     public function __construct()
     {
-        require_once('Config.php');
+        require_once('Configuration.php');
         $config = Configuration::getConfig();
         $this->host = $config['host'];
         $this->user = $config['user'];
         $this->password = $config['password'];
         $this->db_name = $config['db_name'];
-        print_r($this);
         $this->connect();
     }
 
@@ -81,6 +80,31 @@ class database
         $sql = "SELECT * FROM $this->table LIMIT ? OFFSET ?";
         $this->statement = $this->connection->prepare($sql);
         $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
+    // $db->table('tableName')->findWhere(conditions: ['key'=>'value'])
+    public function findWhere($conditions = [])
+    {
+        $dem = 0;
+        $sql = "SELECT * FROM $this->table ";
+        foreach ($conditions as $key => $value){
+            $dem > 0 ? $sql.= "AND ".$key." = ? " : $sql.= "WHERE ".$key." = ? " ;
+            $dem++;
+        }
+        $strConditions = array_values($conditions);
+
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param(str_repeat('s',count($conditions)), ...$strConditions);
         $this->statement->execute();
         $this->resetQuery();
 

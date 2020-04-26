@@ -7,7 +7,7 @@ class Configuration
 		    'host'=>'localhost',
 		    'user'=>'root',
 		    'password'=>'',
-		    'db_name'=>'hieusach'
+		    'db_name'=>'nhaccu'
 		];
 	}
 }
