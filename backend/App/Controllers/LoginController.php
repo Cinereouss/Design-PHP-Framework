@@ -23,7 +23,8 @@ class LoginController extends Controller
                 $_SESSION['username'] = $username;
                 header('Location: ../Home');
             } else {
-                echo 'Thông tin đăng nhập không đúng';
+                header('Location: ../Login?login=failed');
+                echo 'sai';
             }
         }
     }

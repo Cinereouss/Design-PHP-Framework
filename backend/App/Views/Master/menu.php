@@ -5,5 +5,6 @@
         <a href="Dashboard" class="list-group-item list-group-item-action">Tổng quan</a>
         <a href="Product" class="list-group-item list-group-item-action">Sản phẩm</a>
         <a href="Order" class="list-group-item list-group-item-action">Đơn đặt hàng</a>
+        <a href="Signup" class="list-group-item list-group-item-action">Tạo tài khoản</a>
     </div>
 </div>

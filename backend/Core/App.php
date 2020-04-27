@@ -13,7 +13,7 @@ class App
         //Router Controller
         unset($url[0]);
         unset($url[1]);
-        if($url[2] == 'Login'){
+        if(count($url) > 0 && $url[2] == 'Login'){
             if (count($url) > 0 && file_exists("./App/Controllers/" . $url[2] . "Controller.php")) {
                 $this->controller = $url[2] . "Controller";
                 unset($url[2]);

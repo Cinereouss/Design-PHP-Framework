@@ -31,10 +31,9 @@ if(isset($_SESSION['username'])){
                 <h1 class="h3 mb-3 font-weight-normal">Đăng nhập để tiếp tục</h1>
                 <input type="username" id="inputEmail" class="form-control" name="username" placeholder="Tên tài khoản" required autofocus>
                 <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mật khẩu" required>
-
-                <div class="checkbox">
+                <div>
                     <label>
-                        <input type="checkbox" value="remember-me"> Remember me
+
                     </label>
                 </div>
                 <button class="btn btn-lg btn-secondary btn-block" name="btnLogin" type="submit">Sign In</button>
