@@ -1,5 +1,6 @@
 <?php
-class CartController extends Controller {
+class
+CartController extends Controller {
     private $model;
 
     public function __construct(){

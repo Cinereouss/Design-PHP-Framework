@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['username'])){
+    header('Location: Home');
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -21,21 +26,20 @@
         </div>
 
         <div class="login right col-12 col-lg-6 col-md-6 col-sm-12">
-            <form class="form-signin" method="GET" action="Login">
+            <form class="form-signin" method="POST" action="Login/login">
                 <img class="mb-4" src="./public/image/logo.png" alt="logo" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Đăng nhập để tiếp tục</h1>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Tên tài khoản" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required>
-
-                <div class="checkbox">
+                <input type="username" id="inputEmail" class="form-control" name="username" placeholder="Tên tài khoản" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Mật khẩu" required>
+                <div>
                     <label>
-                        <input type="checkbox" value="remember-me"> Remember me
+
                     </label>
                 </div>
-                <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign In</button>
+                <button class="btn btn-lg btn-secondary btn-block" name="btnLogin" type="submit">Sign In</button>
                 <div class="mt-1 mb-1">
                     <label>
-                        Don't have an account ? <a href="Login/signup" target="_self">Sign Up</a>
+                        Don't have an account ? <a href="Signup" target="_self">Sign Up</a>
                     </label>
                 </div>
                 <p class="mt-2 mb-2 text-muted">Design by H2D 2020 &copy;</p>
