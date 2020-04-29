@@ -12,4 +12,12 @@ class OrderController extends Controller {
             'Content'=>'Order'
         ]);
     }
+
+    public function buyOne($idProduct) {
+        $this->view('Master', [
+            'Content'=>'Order',
+            'DBData'=>$this->model->showProductDetail($idProduct),
+            'Title'=>'Đăng kí đặt mua'
+        ]);
+    }
 }

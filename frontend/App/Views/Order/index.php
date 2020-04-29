@@ -59,16 +59,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>GREG BENNETT GD-100SCE <span class="product-quantity">x2</span></td>
-                        <td>10.710.000 VNĐ</td>
-                    </tr>
-                    <tr>
-                        <td>GREG BENNETT GD-100SCE <span class="product-quantity">x1</span></td>
-                        <td>10.710.000 VNĐ</td>
+                        <td><?= $data['DBData'][0]->ten ?> <span class="product-quantity">x1</span></td>
+                        <td><span class="home-price"><?= $data['DBData'][0]->giasp ?></span> VNĐ</td>
                     </tr>
                     <tr>
                         <th scope="col">TỔNG ĐƠN HÀNG</th>
-                        <th scope="col">40.970.000 VNĐ</th>
+                        <th scope="col"><span class="home-price"><?= $data['DBData'][0]->giasp ?></span> VNĐ</th>
                     </tr>
                     </tbody>
                 </table>

@@ -16,7 +16,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Thương hiệu
+                            Thương hiệu đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Đàn guitar Taylor</a>
@@ -28,17 +28,18 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Phụ kiện
+                            Loại đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Phím đàn guitar</a>
-                            <a class="dropdown-item" href="#">Capo đàn guitar</a>
-                            <a class="dropdown-item" href="#">Dây đeo đàn guitar</a>
+                            <a class="dropdown-item" href="#">Classic</a>
+                            <a class="dropdown-item" href="#">Ukulele</a>
+                            <a class="dropdown-item" href="#">Acoustic</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Thương hiệu khác</a>
                         </div>
                     </li>
                 </ul>
+                <a class="nav-link" href="/Cart/index" style="color: white"><ion-icon name="cart-outline"></ion-icon></a>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
                     <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Tìm kiếm</button>

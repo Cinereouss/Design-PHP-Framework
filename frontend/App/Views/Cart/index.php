@@ -122,22 +122,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td><img src="./public/image/product-1.jpg" alt="product-1"></td>
-                <td>GREG BENNETT GD-100SCE</td>
-                <td>10.710.000 VNĐ</td>
-                <td><input style="width: 40px;" type="number" value="1" min="0" max="10"></td>
-                <td>10.710.000 VNĐ</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td><img src="./public/image/product-2.jpg" alt="product-1"></td>
-                <td>GREG BENNETT GD-100SCE</td>
-                <td>10.710.000 VNĐ</td>
-                <td><input style="width: 40px;" type="number" value="1" min="0" max="10"></td>
-                <td>10.710.000 VNĐ</td>
-            </tr>
+            <?php
+                $countProduct = 1;
+                foreach ($data['DBData'] as $idProduct => $details) {
+                    echo '<tr>';
+                    echo '<th scope="row">'.$countProduct.'</th>';
+                    echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
+                    echo '<td>'.$details['ten'].'</td>';
+                    echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
+                    echo '<td><input style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                    echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
+                    echo '</tr>';
+
+                    $countProduct++;
+                }
+            ?>
             </tbody>
         </table>
     </div>

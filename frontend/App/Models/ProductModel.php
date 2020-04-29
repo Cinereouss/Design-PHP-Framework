@@ -1,6 +1,13 @@
 <?php
-class ProductModel{
-    public function test(){
-        return "func test";
+class ProductModel extends Model {
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new Model();
+    }
+
+    public function fetchProductDetail($idProduct) {
+        return $this->db->table('sanpham')->findWhere(['id'=>$idProduct]);
     }
 }

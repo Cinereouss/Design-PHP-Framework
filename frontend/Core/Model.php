@@ -1,5 +1,5 @@
 <?php
-class database
+class Model
 {
     //Satus of class
     protected $connection = null;
@@ -24,7 +24,6 @@ class database
         $this->user = $config['user'];
         $this->password = $config['password'];
         $this->db_name = $config['db_name'];
-        print_r($this);
         $this->connect();
     }
 
@@ -92,6 +91,23 @@ class database
         return $returnData;
     }
 
+    public function findSomeFields($fields = [])
+    {
+        $selectedFields = implode(',', $fields);
+        $sql = "SELECT ". $selectedFields ." FROM $this->table LIMIT ? OFFSET ?";
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
     public function updateById($id, $data = [])
     {
         $keyValue = [];
@@ -121,6 +137,47 @@ class database
         $this->statement->execute();
         $this->resetQuery();
         return $this->statement->affected_rows;
+    }
+
+    public function findWhere($conditions = [])
+    {
+        $dem = 0;
+        $sql = "SELECT * FROM $this->table ";
+        foreach ($conditions as $key => $value){
+            $dem > 0 ? $sql.= "AND ".$key." = ? " : $sql.= "WHERE ".$key." = ? " ;
+            $dem++;
+        }
+        $strConditions = array_values($conditions);
+
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param(str_repeat('s',count($conditions)), ...$strConditions);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
+    public function findAllInOrder($field, $order)
+    {
+        $sql = "SELECT * FROM ".$this->table." ORDER BY ".$field." ".$order. " LIMIT ? OFFSET ?";
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
     }
 
 }
