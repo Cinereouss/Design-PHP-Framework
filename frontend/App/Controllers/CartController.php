@@ -19,4 +19,23 @@ CartController extends Controller {
         $this->model->addToCart($idProduct);
         header('Location: /Cart/index');
     }
+
+    public function update($params) {
+        $arrParam = explode('-', $params);
+        $numOfProductInCart = count($arrParam) - 1;
+
+        $arrOfChanges = [];
+
+        for($i = 0; $i < $numOfProductInCart; $i++) {
+            $arrDetailChanges = explode('*', $arrParam[$i]);
+            $arrOfChanges[$arrDetailChanges[0]] = $arrDetailChanges[1];
+        }
+
+        foreach ($arrOfChanges as $productId => $productQuantity) {
+            $_SESSION['cart'][$productId]['soluong'] = (int)$productQuantity;
+            $_SESSION['cart'][$productId]['thanhtien'] = (int)$productQuantity * $_SESSION['cart'][$productId]['giasp'];
+        }
+
+        header('Location: /Cart/index');
+    }
 }

@@ -136,16 +136,20 @@
                 } else {
                     $countProduct = 1;
                     foreach ($data['DBData'] as $idProduct => $details) {
-                        echo '<tr>';
-                        echo '<th scope="row">'.$countProduct.'</th>';
-                        echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
-                        echo '<td>'.$details['ten'].'</td>';
-                        echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
-                        echo '<td><input style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
-                        echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
-                        echo '</tr>';
+                        if($details['soluong'] != 0) {
+                            echo '<tr>';
+                            echo '<th scope="row">'.$countProduct.'</th>';
+                            echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
+                            echo '<td>'.$details['ten'].'</td>';
+                            echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
+                            echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                            echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
+                            echo '</tr>';
 
-                        $countProduct++;
+                            $countProduct++;
+                        } else {
+                            // remove session
+                        }
                     }
                 }
             ?>
@@ -167,7 +171,7 @@
             echo '<h1>TỔNG GIÁ TRỊ ĐƠN HÀNG: <span id="total-price" class="home-price">'.$totalPrice.' VNĐ</span></h1>';
             ?>
 
-            <a id="btn-update-cart" href="#" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
+            <a id="btn-update-cart" href="javascript:void(0)" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
             <a href="/Order" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
         </div>
     </div>

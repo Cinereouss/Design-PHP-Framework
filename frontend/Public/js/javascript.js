@@ -109,8 +109,14 @@ $(document).ready(function() {
 });
 
 // Update cart
-if ($('#btn-update-cart')){
-    $('#btn-update-cart').click(function () {
-        alert('csdcxs');
-    })
-}
+$(document).ready(function() {
+    if ($('#btn-update-cart')){
+        $('#btn-update-cart').click(function () {
+            let secretParams = '';
+            $('.table-cart input').each( function () {
+                secretParams = secretParams + $(this).attr('id').split('-')[1] + '*' + $(this).val() + '-';
+            })
+            window.location.pathname = `/Cart/update/${secretParams}`;
+        })
+    }
+});
