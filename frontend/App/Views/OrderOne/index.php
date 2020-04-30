@@ -58,33 +58,17 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    <?php
-                    if (isset($_SESSION['cart'])) {
-                        foreach ($_SESSION['cart'] as $idProduct => $detail) {
-                            echo '<tr>';
-                            echo '<td>'.$detail['ten'].' <span class="product-quantity"><strong> x '.$detail['soluong'].' sản phẩm </strong></span></td>';
-                            echo '<td><span class="home-price">'.$detail['giasp'].'</span> VNĐ</td>';
-                            echo '</tr>';
-                        }
-                    } else {
-                        echo '';
-                    }
-                    ?>
-
+                    <tr>
+                        <?php
+                            echo '<td>'.$data['DBData'][0]->ten.' <span class="product-quantity"><strong> x 1</strong></span></td>';
+                            echo '<td><span class="home-price">'.$data['DBData'][0]->giasp.'</span> VNĐ</td>';
+                        ?>
+                    </tr>
                     <tr>
                         <th scope="col">TỔNG ĐƠN HÀNG</th>
-
                         <?php
-                        $totalPrice = 0;
-                        if(!empty($_SESSION['cart'])){
-                            foreach ($_SESSION['cart'] as $idProduct => $details) {
-                                $totalPrice += $details['thanhtien'];
-                            }
-                        }
-                        echo '<th scope="col"><span class="home-price">'.$totalPrice.'</span> VNĐ</th>';
+                            echo '<th scope="col"><span class="home-price">'.$data['DBData'][0]->giasp.'</span> VNĐ</th>';
                         ?>
-
                     </tr>
                     </tbody>
                 </table>

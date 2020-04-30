@@ -38,8 +38,34 @@
                             <a class="dropdown-item" href="#">Thương hiệu khác</a>
                         </div>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Giỏ hàng <span class="num-in-cart"><?php
+                                if(isset($_SESSION['cart'])){
+                                    echo count($_SESSION['cart']);
+                                } else {
+                                    echo '0';
+                                }
+                                ?></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <?php
+                            if (isset($_SESSION['cart'])) {
+                                foreach ($_SESSION['cart'] as $idProduct => $detail) {
+                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'">'.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
+                                }
+                            } else {
+                                echo '<a class="dropdown-item" href="/Cart/index">Giỏ hàng trống</a>';
+                            }
+                            ?>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Cart/index">Xem chi tiết giỏ hàng</a>
+                        </div>
+                    </li>
                 </ul>
-                <a class="nav-link" href="/Cart/index" style="color: white"><ion-icon name="cart-outline"></ion-icon></a>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
                     <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Tìm kiếm</button>

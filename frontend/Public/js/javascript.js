@@ -82,7 +82,7 @@ $(document).ready(function() {
     }
 });
 
-// Submit a form
+// Submit a form (email)
 const notifyGenerator = (typeOfNotify, text) => {
     return `<div class="alert ${typeOfNotify} alert-dismissible fade show fixed-top" style="width: 50%; margin: 0 auto" role="alert">
       ${text}
@@ -107,3 +107,10 @@ $(document).ready(function() {
         window.location.hash = '';
     }
 });
+
+// Update cart
+if ($('#btn-update-cart')){
+    $('#btn-update-cart').click(function () {
+        alert('csdcxs');
+    })
+}

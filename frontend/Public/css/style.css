@@ -6,7 +6,7 @@
 
 html,
 body {
-    font-family: "Lato", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     overflow-x: hidden;
     background-color: rgb(248, 249, 250);
@@ -653,4 +653,14 @@ form label {
 h5 {
     font-weight: bold;
     text-transform: uppercase;
+}
+
+/*CART*/
+.num-in-cart {
+    text-align: center;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+    border-radius: 10%;
+    padding: 2px 4px ;
+    font-weight: bold;
 }

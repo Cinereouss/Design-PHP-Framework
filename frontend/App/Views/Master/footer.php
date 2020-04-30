@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12 col-md-12 col-sm-12">
-                <img id="contact-icon" src="/public/image/contact.svg" alt="contact">
+                <img id="contact-icon" src="/Public/image/contact.svg" alt="contact">
             </div>
         </div>
 

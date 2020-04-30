@@ -122,19 +122,31 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-                $countProduct = 1;
-                foreach ($data['DBData'] as $idProduct => $details) {
-                    echo '<tr>';
-                    echo '<th scope="row">'.$countProduct.'</th>';
-                    echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
-                    echo '<td>'.$details['ten'].'</td>';
-                    echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
-                    echo '<td><input style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
-                    echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
-                    echo '</tr>';
 
-                    $countProduct++;
+            <?php
+                if (empty($data['DBData'])) {
+                    echo '<tr>
+                <td>0</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                </tr>';
+                } else {
+                    $countProduct = 1;
+                    foreach ($data['DBData'] as $idProduct => $details) {
+                        echo '<tr>';
+                        echo '<th scope="row">'.$countProduct.'</th>';
+                        echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
+                        echo '<td>'.$details['ten'].'</td>';
+                        echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
+                        echo '<td><input style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                        echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
+                        echo '</tr>';
+
+                        $countProduct++;
+                    }
                 }
             ?>
             </tbody>
@@ -144,14 +156,24 @@
     <!-- Total price -->
     <div class="clear-fix">
         <div class="total-price-container">
-            <h1>TỔNG GIÁ TRỊ: <span id="total-price">53.980.000Đ</span></h1>
-            <a href="#" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
+
+            <?php
+            $totalPrice = 0;
+            if(!empty($data['DBData'])){
+                foreach ($data['DBData'] as $idProduct => $details) {
+                    $totalPrice += $details['thanhtien'];
+                }
+            }
+            echo '<h1>TỔNG GIÁ TRỊ ĐƠN HÀNG: <span id="total-price" class="home-price">'.$totalPrice.' VNĐ</span></h1>';
+            ?>
+
+            <a id="btn-update-cart" href="#" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
             <a href="/Order" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
         </div>
     </div>
     <!-- End total price -->
 
-    <p style="margin-bottom: 30px;">*Click vào <strong>“Cập nhật giỏ hàng”</strong> để cập nhật số lượng. Nhập vào số lượng 0 để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất mua hàng.</p>
+    <p style="margin-bottom: 30px;">*Click vào <strong>“Cập nhật giỏ hàng”</strong> để cập nhật số lượng. Nhập vào số lượng 0 để xóa sản phẩm khỏi giỏ hàng. Nhấn vào <strong>“Đặt hàng ngay”</strong> để tiến hành đặt hàng.</p>
 
 </div>
 <!-- End cart detail -->

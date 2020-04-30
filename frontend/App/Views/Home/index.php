@@ -17,11 +17,11 @@
             foreach ($data['Slides'] as $index => $slide) {
                 if($index == 0) {
                     echo '<div class="carousel-item active">
-                    <img class="d-block w-100" src="/public/image/'.$slide->img.'" alt="'.$slide->alt.'">
+                    <img class="d-block w-100" src="/Public/image/'.$slide->img.'" alt="'.$slide->alt.'">
                 </div>';
                 } else {
                     echo '<div class="carousel-item">
-                    <img class="d-block w-100" src="/public/image/'.$slide->img.'" alt="'.$slide->alt.'">
+                    <img class="d-block w-100" src="/Public/image/'.$slide->img.'" alt="'.$slide->alt.'">
                 </div>';
                 }
             }
@@ -212,7 +212,7 @@
             ?>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="/public/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
+                    <img src="/Public/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title"><?= $record->ten ?></h5>
                         <p class="card-title" style="color: red;">Giá: <span class="home-price"><?= $record->giasp ?></span> VNĐ</p>

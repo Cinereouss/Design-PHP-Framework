@@ -7,16 +7,18 @@ class OrderController extends Controller {
         $this->model = $this->model('Order');
     }
 
+
     public function index(){
         $this->view('Master', [
-            'Content'=>'Order'
+            'Content'=>'Order',
+            'Title'=>'Đăng kí đặt mua'
         ]);
     }
 
     public function buyOne($idProduct) {
         $this->view('Master', [
-            'Content'=>'Order',
-            'DBData'=>$this->model->showProductDetail($idProduct),
+            'Content'=>'OrderOne',
+            'DBData'=>$this->model->fetchProductDetail($idProduct),
             'Title'=>'Đăng kí đặt mua'
         ]);
     }

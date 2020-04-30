@@ -7,7 +7,7 @@ class OrderModel extends Model {
         $this->db = new Model();
     }
 
-    public function showProductDetail($idProduct) {
+    public function fetchProductDetail($idProduct) {
         return $this->db->table('sanpham')->findWhere(['id' => $idProduct]);
     }
 

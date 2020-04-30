@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/Public/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700&amp;amp;subset=latin-ext,vietnamese">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+:400,500,700|Roboto:400,500,700&amp;subset=latin-ext,vietnamese">
     <link rel="icon" type="image/png" sizes="16x16" href="/Public/image/logo.png">
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
