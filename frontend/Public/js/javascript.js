@@ -92,18 +92,25 @@ const notifyGenerator = (typeOfNotify, text) => {
     </div>`;
 }
 
+const showCustomizeAlert = (typeOfNotify, text) => {
+    $('header').after(notifyGenerator(typeOfNotify, text));
+    setTimeout(function(){
+            $('.alert').remove()},
+        3000);
+}
+
 $(document).ready(function() {
     if(window.location.hash === '#submit-success') {
-        $('header').after(notifyGenerator('alert-success', 'Đăng kí nhận cập nhật email thành công'));
-        setTimeout(function(){
-            $('.alert').remove()},
-            3000);
+        showCustomizeAlert('alert-success', 'Đăng kí nhận cập nhật email thành công');
         window.location.hash = '';
     } else if (window.location.hash === '#submit-fail') {
-        $('header').after(notifyGenerator('alert-danger', 'Đăng kí nhận cập nhật email thất bại, thử lại sau'));
-        setTimeout(function(){
-                $('.alert').remove()},
-            3000);
+        showCustomizeAlert('alert-danger', 'Đăng kí nhận cập nhật email thất bại, thử lại sau');
+        window.location.hash = '';
+    } else if (window.location.hash === '#update-fail') {
+        showCustomizeAlert('alert-danger', 'Đăng kí nhận cập nhật email thất bại, thử lại sau');
+        window.location.hash = '';
+    } else if (window.location.hash === '#update-cart-success') {
+        showCustomizeAlert('alert-success', 'Cập nhật giỏ hàng thành công');
         window.location.hash = '';
     }
 });
@@ -112,11 +119,28 @@ $(document).ready(function() {
 $(document).ready(function() {
     if ($('#btn-update-cart')){
         $('#btn-update-cart').click(function () {
-            let secretParams = '';
-            $('.table-cart input').each( function () {
-                secretParams = secretParams + $(this).attr('id').split('-')[1] + '*' + $(this).val() + '-';
-            })
-            window.location.pathname = `/Cart/update/${secretParams}`;
-        })
+            if ($("#check-empty-cart-jq").length) {
+                showCustomizeAlert('alert-danger', 'Không cập nhật được khi giỏ hàng còn trống');
+            } else {
+                let secretParams = '';
+                $('.table-cart input').each( function () {
+                    secretParams = secretParams + $(this).attr('id').split('-')[1] + '*' + $(this).val() + '-';
+                })
+                window.location.pathname = `/Cart/update/${secretParams}`;
+            }
+        });
+    }
+});
+
+// Order now button
+$(document).ready(function() {
+    if ($('#btn-order-now')){
+        $('#btn-order-now').click(function () {
+            if ($("#check-empty-cart-jq").length) {
+                showCustomizeAlert('alert-danger', 'Không thể đặt hàng khi giỏ hàng đang trống');
+            } else {
+                window.location.pathname = `/Order/index`;
+            }
+        });
     }
 });

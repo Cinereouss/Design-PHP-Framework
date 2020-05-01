@@ -124,33 +124,30 @@
             <tbody>
 
             <?php
-                if (empty($data['DBData'])) {
-                    echo '<tr>
+                if (empty($data['DBData'])){
+                    echo '<tr id="check-empty-cart-jq">
                 <td>0</td>
                 <td>Trống</td>
                 <td>Trống</td>
                 <td>Trống</td>
                 <td>Trống</td>
-                <td>Trống</td>
+                <td>0</td>
                 </tr>';
                 } else {
                     $countProduct = 1;
                     foreach ($data['DBData'] as $idProduct => $details) {
-                        if($details['soluong'] != 0) {
-                            echo '<tr>';
-                            echo '<th scope="row">'.$countProduct.'</th>';
-                            echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
-                            echo '<td>'.$details['ten'].'</td>';
-                            echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
-                            echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
-                            echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
-                            echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row">'.$countProduct.'</th>';
+                        echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
+                        echo '<td>'.$details['ten'].'</td>';
+                        echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
+                        echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                        echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
+                        echo '</tr>';
 
-                            $countProduct++;
-                        } else {
-                            // remove session
-                        }
+                        $countProduct++;
                     }
+
                 }
             ?>
             </tbody>
@@ -172,7 +169,7 @@
             ?>
 
             <a id="btn-update-cart" href="javascript:void(0)" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
-            <a href="/Order" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
+            <a id="btn-order-now" href="javascript:void(0)" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
         </div>
     </div>
     <!-- End total price -->

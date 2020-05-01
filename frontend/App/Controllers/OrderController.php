@@ -22,4 +22,120 @@ class OrderController extends Controller {
             'Title'=>'Đăng kí đặt mua'
         ]);
     }
+
+    private function calculateTotalPrice() {
+        $totalPrice = 0;
+        if (!empty($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $idProduct => $details) {
+                $totalPrice += $details['thanhtien'];
+            }
+        }
+
+        return $totalPrice;
+    }
+
+    public function successOrder() {
+        $this->view('Master', [
+            'Content'=>'SuccessOrder',
+            'Title'=>'Đặt mua thành công'
+        ]);
+    }
+
+    public function executeOneProductOrder($idProduct) {
+        if (isset($_POST['datHang'])) {
+            $ten = $_POST['fullname'];
+            $mail = $_POST['email'];
+            $sdt = $_POST['phone'];
+            $diachi = $_POST['address'];
+            $ngay = date("Y-m-d H:i:s");
+            $ghichu = $_POST['note'];
+            $tinhtrang = 'Chưa xét duyệt';
+
+            $productData  = $this->model->fetchProductDetail($idProduct);
+            $tongtien = $productData[0]->giasp;
+
+            $newCreatedKhachHangId =  $this->model->insertDataToKhachHangAndReturnId ([
+                'ten' => $ten,
+                'mail' => $mail,
+                'sdt' => $sdt,
+                'diachi' => $diachi
+            ]);
+
+            if($newCreatedKhachHangId != 0) {
+                $newCreatedDonHangId = $this->model->insertDataToDonHangAndReturnId ([
+                    'ngay' => $ngay,
+                    'ghichu' => $ghichu,
+                    'tinhtrang' => $tinhtrang,
+                    'khachhang_id' => $newCreatedKhachHangId,
+                    'tongtien' => $tongtien
+                ]);
+
+                if($newCreatedDonHangId != 0) {
+                    $this->model->insertDataToChiTietDonHang ([
+                        'sanpham_id' =>  $idProduct,
+                        'donhang_id' => $newCreatedDonHangId,
+                        'soluong' => 1
+                    ]);
+                } else {
+                    header('Location: /Error/index');
+                }
+            } else {
+                header('Location: /Error/index');
+            }
+
+            header('Location: /Order/successOrder');
+        }
+    }
+
+    public function executeOrder() {
+        if (isset($_POST['datHang'])) {
+            $ten = $_POST['fullname'];
+            $mail = $_POST['email'];
+            $sdt = $_POST['phone'];
+            $diachi = $_POST['address'];
+            $ngay = date("Y-m-d H:i:s");
+            $ghichu = $_POST['note'];
+            $tinhtrang = 'Chưa xét duyệt';
+            $tongtien = $this->calculateTotalPrice();
+            $arrChiTietDonHang = [];
+
+            foreach ($_SESSION['cart'] as $idProduct => $detail) {
+                $arrChiTietDonHang[$idProduct] = $detail['soluong'];
+            }
+
+            $newCreatedKhachHangId =  $this->model->insertDataToKhachHangAndReturnId ([
+                'ten' => $ten,
+                'mail' => $mail,
+                'sdt' => $sdt,
+                'diachi' => $diachi
+            ]);
+
+            if($newCreatedKhachHangId != 0) {
+                $newCreatedDonHangId = $this->model->insertDataToDonHangAndReturnId ([
+                    'ngay' => $ngay,
+                    'ghichu' => $ghichu,
+                    'tinhtrang' => $tinhtrang,
+                    'khachhang_id' => $newCreatedKhachHangId,
+                    'tongtien' => $tongtien
+                ]);
+
+                if($newCreatedDonHangId != 0) {
+                    foreach ($arrChiTietDonHang as $idProduct => $soLuong) {
+                        $this->model->insertDataToChiTietDonHang ([
+                            'sanpham_id' =>  $idProduct,
+                            'donhang_id' => $newCreatedDonHangId,
+                            'soluong' => $soLuong
+                        ]);
+                    }
+                } else {
+                    header('Location: /Error/index');
+                }
+            } else {
+                header('Location: /Error/index');
+            }
+
+            unset($_SESSION['cart']);
+            header('Location: /Order/successOrder');
+        }
+    }
 }

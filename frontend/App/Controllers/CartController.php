@@ -36,6 +36,12 @@ CartController extends Controller {
             $_SESSION['cart'][$productId]['thanhtien'] = (int)$productQuantity * $_SESSION['cart'][$productId]['giasp'];
         }
 
-        header('Location: /Cart/index');
+        foreach ($_SESSION['cart'] as $idProduct => $details) {
+            if($details['soluong'] == 0) {
+                unset($_SESSION['cart'][$idProduct]);
+            }
+        }
+
+        header('Location: /Cart/index/#update-cart-success');
     }
 }

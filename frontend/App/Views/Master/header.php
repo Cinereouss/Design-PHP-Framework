@@ -52,7 +52,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                             <?php
-                            if (isset($_SESSION['cart'])) {
+                            if (!empty($_SESSION['cart'])) {
                                 foreach ($_SESSION['cart'] as $idProduct => $detail) {
                                     echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'">'.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
                                 }

@@ -21,7 +21,9 @@
 
 <!-- Order Detail -->
 <div class="container">
-    <form class="form-order-detal" action="#" method="POST">
+    <?php
+    echo '<form class="form-order-detal" action="/Order/executeOneProductOrder/'.$data['DBData'][0]->id.'" method="POST">';
+    ?>
         <div class="row">
 
             <div class="left-form col-12 col-lg-6 col-md-6 col-sm-12">
@@ -60,7 +62,7 @@
                     <tbody>
                     <tr>
                         <?php
-                            echo '<td>'.$data['DBData'][0]->ten.' <span class="product-quantity"><strong> x 1</strong></span></td>';
+                            echo '<td>'.$data['DBData'][0]->ten.' <span class="product-quantity"><strong> x 1 sản phẩm</strong></span></td>';
                             echo '<td><span class="home-price">'.$data['DBData'][0]->giasp.'</span> VNĐ</td>';
                         ?>
                     </tr>
@@ -72,7 +74,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-secondary mb-2">ĐẶT HÀNG</button>
+                <button type="submit" class="btn btn-secondary mb-2" name="datHang">ĐẶT HÀNG</button>
             </div>
 
         </div>

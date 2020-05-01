@@ -74,6 +74,25 @@ class Model
         return $this->statement->affected_rows;
     }
 
+    public function insertAndReturnId($data = [])
+    {
+        $fields = implode(',', array_keys($data));
+        $valueQuestionMark = implode(',', array_fill(0, count($data), '?'));
+        $values =array_values($data);
+
+        $sql = "INSERT INTO $this->table($fields) VALUES ($valueQuestionMark)";
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param(str_repeat('s',count($data)), ...$values);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        if($this->statement->affected_rows > 0) {
+            return $this->statement->insert_id;
+        }
+
+        return 0;
+    }
+
     // $db->table('tableName')->limit()->offset()->findAll()
     public function findAll()
     {

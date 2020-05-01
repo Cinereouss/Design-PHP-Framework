@@ -21,7 +21,7 @@
 
 <!-- Order Detail -->
 <div class="container">
-    <form class="form-order-detal" action="#" method="POST">
+    <form class="form-order-detal" action="/Order/executeOrder" method="POST">
         <div class="row">
 
             <div class="left-form col-12 col-lg-6 col-md-6 col-sm-12">
@@ -88,7 +88,14 @@
                     </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-secondary mb-2">ĐẶT HÀNG</button>
+
+                <?php
+                if (!empty($_SESSION['cart'])) {
+                    echo '<button type="submit" class="btn btn-secondary mb-2" name="datHang">ĐẶT HÀNG</button>';
+                } else {
+                    echo '<button type="submit" class="btn btn-secondary mb-2" name="datHang" disabled>ĐẶT HÀNG</button>';
+                }
+                ?>
             </div>
 
         </div>
