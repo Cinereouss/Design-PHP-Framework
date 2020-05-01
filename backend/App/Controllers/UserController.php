@@ -1,30 +1,29 @@
 <?php
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     private $model;
 
     public function __construct()
     {
-        $this->model = $this->model('Login');
+        $this->model = $this->model('User');
     }
 
     public function index()
     {
-        $this->view('Login');
+        $this->view('User');
     }
 
-    public function login()
+    public function userLogin()
     {
-        if (isset($_POST['btnLogin'])) {
+        if (isset($_POST) ){
             $username = $_POST['username'];
             $password = $_POST['password'];
             if ($this->model->checkLogin($username, $password)) {
                 $_SESSION['username'] = $username;
-                header('Location: ../Home');
+                echo 'true';
             } else {
-                header('Location: ../Login?login=failed');
-                echo 'sai';
+                echo 'false';
             }
         }
     }
