@@ -118,6 +118,22 @@ h1 {
     border-radius: 4px;
 }
 
+.filter-btl button {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.filter-btl .btn-customize-secondary {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.filter-btl .btn-customize-secondary:hover {
+    background-color: #dae0e5;
+    border-color: #dae0e5;
+}
+
 .section-product .card {
     width: 100% !important;
     border-radius: 10px;

@@ -160,43 +160,47 @@
 <!--Filter -->
 <section class="filter-btl">
     <div class="container clear-fix">
-        <div class="left-filter-btl">
-            <span>Tìm theo <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon></span>
-            <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    Loại đàn
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+        <form action="/Home/sort/1" method="POST">
+            <div class="left-filter-btl">
+                <span>Tìm theo <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon></span>
+                <div class="btn-group">
+                    <select class="selectpicker" data-width="fit" name="loaiDan">
+                        <option value="0" selected>Loại đàn</option>
+
+                        <?php
+                        foreach ($data['LoaiDan'] as $record){
+                            echo '<option value="'.$record->id.'">'.$record->ten.'</option>';
+                        }
+                        ?>
+
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <select class="selectpicker" data-width="fit" name="thuongHieu">
+                        <option value="0" selected>Thương hiệu</option>
+
+                        <?php
+                        foreach ($data['ThuongHieu'] as $record){
+                            echo '<option value="'.$record->id.'">'.$record->ten.'</option>';
+                        }
+                        ?>
+
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <select class="selectpicker" data-width="fit" name="sortPrice">
+                        <option value="NO-ASC-DESC" selected>Giá thành</option>
+                        <option value="ASC">Từ thấp tới cao</option>
+                        <option value="DESC">Từ cao tới thấp</option>
+                    </select>
                 </div>
             </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    Thương hiệu
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+            <div class="right-filter-btl">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-secondary btn-customize-secondary" name="submit-filter-product"><ion-icon style="display: inline-block; margin-bottom: -3.5px" name="funnel-outline"></ion-icon> Lọc sản phẩm</button>
                 </div>
             </div>
-        </div>
-        <div class="right-filter-btl">
-            <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    Sắp xếp theo giá
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/Home/sortPrice/low-high">Giá thấp tới cao</a>
-                    <a class="dropdown-item" href="/Home/sortPrice/high-low">Giá cao tới thấp</a>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </section>
 <!-- End Filter -->
@@ -234,15 +238,36 @@
     <div class="container">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Tiếp</a>
-                </li>
+
+                <?php
+                // Previous
+                if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){
+                    echo '<li class="page-item">
+                    <a class="page-link" href="/Home/page/'.($data['CurrentPage'] - 1).'" tabindex="-1" aria-disabled="true">Trước</a>
+                </li>';
+                }
+                ?>
+
+                <?php
+                // Total pages
+                for($i = 1; $i < $data['TotalPage'] + 1; $i++){
+                    if ($i == $data['CurrentPage']) {
+                        echo '<li class="page-item active"><a class="page-link" href="/Home/page/'.$i.'">'.$i.'</a></li>';
+                    }else {
+                        echo '<li class="page-item"><a class="page-link" href="/Home/page/'.$i.'">'.$i.'</a></li>';
+                    }
+                }
+                ?>
+
+                <?php
+                // Next
+                if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1){
+                    echo '<li class="page-item">
+                    <a class="page-link" href="/Home/page/'.($data['CurrentPage'] + 1).'">Tiếp</a>
+                </li>';
+                }
+                ?>
+
             </ul>
         </nav>
     </div>

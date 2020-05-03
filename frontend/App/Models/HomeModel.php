@@ -15,15 +15,46 @@ class HomeModel extends Model {
         return $this->db->table('slide')->findAll();
     }
 
-    public function fetchProductOrderByPrice($typeOrder) {
-        $typeSql = '';
-
-        if($typeOrder == 'low-high'){
-            $typeSql = 'ASC';
-        } elseif ($typeOrder == 'high-low'){
-            $typeSql = 'DESC';
+    public function fetchAllFilteredProductPerPage($thuonghieu_id, $loaidan_id, $sortType, $page, $limit) {
+        if($thuonghieu_id == 0) {
+            $thuonghieu_id = '%';
         }
 
-        return $this->db->table('sanpham')->findAllInOrder('giasp', $typeSql);
+        if($loaidan_id == 0) {
+            $loaidan_id = '%';
+        }
+
+        $start = ($page - 1) * $limit;
+
+        return $this->db->table('sanpham')->limit($limit)->offset($start)->findAllFilteredProducts($thuonghieu_id, $loaidan_id, $sortType);
+    }
+
+    public function countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) {
+        if($thuonghieu_id == 0) {
+            $thuonghieu_id = '%';
+        }
+
+        if($loaidan_id == 0) {
+            $loaidan_id = '%';
+        }
+
+        return count($this->db->table('sanpham')->findAllFilteredProducts($thuonghieu_id, $loaidan_id, $sortType));
+    }
+
+    public function countTotalRecord() {
+        return $this->db->table('sanpham')->countRecord();
+    }
+
+    public function fetchAllProductPerPage($page, $limit) {
+        $start = ($page - 1) * $limit;
+        return $this->db->table('sanpham')->limit($limit)->offset($start)->findSomeFields(['id', 'image', 'ten', 'giasp', 'tomtat']);
+    }
+
+    public function fetchAllThuongHieu() {
+        return $this->db->table('thuonghieu')->findAll();
+    }
+
+    public function fetchAllLoaiDan() {
+        return $this->db->table('loaidan')->findAll();
     }
 }
