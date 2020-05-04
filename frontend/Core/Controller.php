@@ -8,6 +8,10 @@ class Controller
     }
 
     public function view($view, $data = []){
+        $globalDataObj = $this->model('Global');
+        $arrThuongHieu = $globalDataObj->fetchAllThuongHieu();
+        $arrLoaiDan = $globalDataObj->fetchAllLoaiDan();
+
         require_once ("./App/Views/".$view."/index.php");
     }
 }

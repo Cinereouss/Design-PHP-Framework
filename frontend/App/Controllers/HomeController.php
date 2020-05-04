@@ -19,6 +19,7 @@ class HomeController extends Controller {
             'Slides'=>$this->model->fetchAllSlides(),
             'TotalPage' => ceil($this->model->countTotalRecord() / $this->pageLimit),
             'CurrentPage' => 1,
+            'PaginationType' => 'page',
             'Title'=>'Trang chủ Guitar H2D'
         ]);
     }
@@ -32,6 +33,7 @@ class HomeController extends Controller {
             'Slides'=>$this->model->fetchAllSlides(),
             'TotalPage' => ceil($this->model->countTotalRecord() / $this->pageLimit),
             'CurrentPage' => $page,
+            'PaginationType' => 'page',
             'Title'=>'Trang chủ Guitar H2D'
         ]);
     }
@@ -50,9 +52,38 @@ class HomeController extends Controller {
                 'Slides'=>$this->model->fetchAllSlides(),
                 'TotalPage' => ceil($this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) / $this->pageLimit),
                 'CurrentPage' => $page,
-                'Title'=>'Trang chủ Guitar H2D'
+                'PaginationType' => 'sortPerPage',
+                'Title'=>'Trang chủ Guitar H2D',
+                '$thuonghieu_id' => $thuonghieu_id,
+                '$loaidan_id' => $loaidan_id,
+                '$sortType' => $sortType
             ]);
         }
+    }
+
+    public function sortPerPage($secretParam) {
+        $arrOfParam = explode('-', $secretParam);
+
+        $loaidan_id = $arrOfParam[0];
+        $thuonghieu_id = $arrOfParam[1];
+        $sortType = $arrOfParam[2];
+
+        $page = $arrOfParam[3];
+
+        $this->view('Master', [
+            'Content'=>'Home',
+            'DBData'=>$this->model->fetchAllFilteredProductPerPage($thuonghieu_id, $loaidan_id, $sortType, $page, $this->pageLimit),
+            'ThuongHieu' => $this->model->fetchAllThuongHieu(),
+            'LoaiDan' => $this->model->fetchAllLoaiDan(),
+            'Slides'=>$this->model->fetchAllSlides(),
+            'TotalPage' => ceil($this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) / $this->pageLimit),
+            'CurrentPage' => $page,
+            'PaginationType' => 'sortPerPage',
+            'Title'=>'Trang chủ Guitar H2D',
+            '$thuonghieu_id' => $thuonghieu_id,
+            '$loaidan_id' => $loaidan_id,
+            '$sortType' => $sortType
+        ]);
     }
 
 }

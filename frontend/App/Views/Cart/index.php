@@ -133,6 +133,8 @@
                 <td>Trống</td>
                 <td>0</td>
                 </tr>';
+
+                    require_once 'empty.php';
                 } else {
                     $countProduct = 1;
                     foreach ($data['DBData'] as $idProduct => $details) {

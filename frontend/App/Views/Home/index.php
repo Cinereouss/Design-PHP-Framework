@@ -189,7 +189,7 @@
                 </div>
                 <div class="btn-group">
                     <select class="selectpicker" data-width="fit" name="sortPrice">
-                        <option value="NO-ASC-DESC" selected>Giá thành</option>
+                        <option value="ALLPRICE" selected>Giá thành</option>
                         <option value="ASC">Từ thấp tới cao</option>
                         <option value="DESC">Từ cao tới thấp</option>
                     </select>
@@ -210,6 +210,12 @@
     <div class="container">
 
         <div class="row">
+
+            <?php
+            if(count($data['DBData']) == 0) {
+                require_once 'empty.php';
+            }
+            ?>
 
             <?php
                 foreach ($data['DBData'] as $record):
@@ -240,31 +246,54 @@
             <ul class="pagination justify-content-center">
 
                 <?php
-                // Previous
-                if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){
-                    echo '<li class="page-item">
-                    <a class="page-link" href="/Home/page/'.($data['CurrentPage'] - 1).'" tabindex="-1" aria-disabled="true">Trước</a>
-                </li>';
-                }
-                ?>
-
-                <?php
-                // Total pages
-                for($i = 1; $i < $data['TotalPage'] + 1; $i++){
-                    if ($i == $data['CurrentPage']) {
-                        echo '<li class="page-item active"><a class="page-link" href="/Home/page/'.$i.'">'.$i.'</a></li>';
-                    }else {
-                        echo '<li class="page-item"><a class="page-link" href="/Home/page/'.$i.'">'.$i.'</a></li>';
+                if($data['PaginationType'] == 'page') {
+                    // Previous
+                    if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){
+                        echo '<li class="page-item">
+                    <a class="page-link" href="/Home/'.$data['PaginationType'].'/'.($data['CurrentPage'] - 1).'" tabindex="-1" aria-disabled="true">Trước</a>
+                    </li>';
                     }
-                }
-                ?>
 
-                <?php
-                // Next
-                if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1){
-                    echo '<li class="page-item">
-                    <a class="page-link" href="/Home/page/'.($data['CurrentPage'] + 1).'">Tiếp</a>
-                </li>';
+                    // Total pages
+                    for($i = 1; $i < $data['TotalPage'] + 1; $i++){
+                        if ($i == $data['CurrentPage']) {
+                            echo '<li class="page-item active"><a class="page-link" href="/Home/'.$data['PaginationType'].'/'.$i.'">'.$i.'</a></li>';
+                        }else {
+                            echo '<li class="page-item"><a class="page-link" href="/Home/'.$data['PaginationType'].'/'.$i.'">'.$i.'</a></li>';
+                        }
+                    }
+
+                    // Next
+                    if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1){
+                        echo '<li class="page-item">
+                    <a class="page-link" href="/Home/'.$data['PaginationType'].'/'.($data['CurrentPage'] + 1).'">Tiếp</a>
+                    </li>';
+                    }
+                } elseif ($data['PaginationType'] == 'sortPerPage') {
+                    $secretParam = '/Home/sortPerPage/'.$data['$loaidan_id'].'-'.$data['$thuonghieu_id'].'-'.$data['$sortType'].'-';
+
+                    // Previous
+                    if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){
+                        echo '<li class="page-item">
+                    <a class="page-link" href="'.$secretParam.($data['CurrentPage'] - 1).'" tabindex="-1" aria-disabled="true">Trước</a>
+                    </li>';
+                    }
+
+                    // Total pages
+                    for($i = 1; $i < $data['TotalPage'] + 1; $i++){
+                        if ($i == $data['CurrentPage']) {
+                            echo '<li class="page-item active"><a class="page-link" href="'.$secretParam.$i.'">'.$i.'</a></li>';
+                        }else {
+                            echo '<li class="page-item"><a class="page-link" href="'.$secretParam.$i.'">'.$i.'</a></li>';
+                        }
+                    }
+
+                    // Next
+                    if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1){
+                        echo '<li class="page-item">
+                    <a class="page-link" href="'.$secretParam.($data['CurrentPage'] + 1).'">Tiếp</a>
+                    </li>';
+                    }
                 }
                 ?>
 

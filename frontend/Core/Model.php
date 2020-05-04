@@ -184,7 +184,7 @@ class Model
 
     public function findAllFilteredProducts($thuonghieu_id, $loaidan_id, $order)
     {
-        if($order != 'NO-ASC-DESC') {
+        if($order != 'ALLPRICE') {
             $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE '$thuonghieu_id' AND loaidan_id LIKE '$loaidan_id' ORDER BY giasp $order LIMIT ? OFFSET ?";
         } else {
             $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE '$thuonghieu_id' AND loaidan_id LIKE '$loaidan_id' LIMIT ? OFFSET ?";
@@ -217,6 +217,27 @@ class Model
             $returnData[] = $row;
         }
         return $returnData[0]->totalRecord;
+    }
+
+    public function findLikeAnOrder($field, $text, $order) {
+
+        if($order != 'ALLPRICE') {
+            $sql = "SELECT * FROM $this->table WHERE $field LIKE '%$text%' ORDER BY giasp $order LIMIT ? OFFSET ?";
+        } else {
+            $sql = "SELECT * FROM $this->table WHERE $field LIKE '%$text%' LIMIT ? OFFSET ?";
+        }
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
     }
 
 }

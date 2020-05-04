@@ -19,11 +19,11 @@
                             Thương hiệu đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Đàn guitar Taylor</a>
-                            <a class="dropdown-item" href="#">Đàn guitar Sigma</a>
-                            <a class="dropdown-item" href="#">Đàn guitar Fender</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Thương hiệu khác</a>
+                            <?php
+                            foreach ($arrThuongHieu as $record){
+                                echo '<a class="dropdown-item" href="#">Guitar '.$record->ten.'</a>';
+                            }
+                            ?>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -31,11 +31,12 @@
                             Loại đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Classic</a>
-                            <a class="dropdown-item" href="#">Ukulele</a>
-                            <a class="dropdown-item" href="#">Acoustic</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Thương hiệu khác</a>
+
+                            <?php
+                            foreach ($arrLoaiDan as $record){
+                                echo '<a class="dropdown-item" href="#">'.$record->ten.'</a>';
+                            }
+                            ?>
                         </div>
                     </li>
 
@@ -66,9 +67,9 @@
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <form class="form-inline my-2 my-lg-0" action="/Search/searchProducts/1" method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search" name="searchKeyword">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" name="btn-search-product">Tìm kiếm</button>
                 </form>
             </div>
         </div>
