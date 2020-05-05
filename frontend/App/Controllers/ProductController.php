@@ -11,6 +11,7 @@ class ProductController extends Controller {
     public function index(){
         $this->view('Master', [
             'Content'=>'Product',
+            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
             'Title'=>'Chi tiết sản phẩm'
         ]);
     }
@@ -19,6 +20,7 @@ class ProductController extends Controller {
         $this->view('Master', [
             'Content'=>'Product',
             'DBData'=>$this->model->fetchProductDetail($idProduct),
+            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
             'Title'=>'Chi tiết sản phẩm'
         ]);
     }

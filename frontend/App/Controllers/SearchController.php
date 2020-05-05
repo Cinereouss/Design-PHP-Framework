@@ -14,8 +14,8 @@ class SearchController extends Controller
     public function index()
     {
         $this->view('Master', [
-            'Content' => 'Search',
-            'Title' => 'Kết quả tìm kiếm'
+            'Content' => 'Error',
+            'Title' => 'Không tìm thấy trang này'
         ]);
     }
 
@@ -31,7 +31,10 @@ class SearchController extends Controller
                 'Keyword' => $keyword,
                 'OrderType' => $order,
                 'TotalPage' => ceil($this->model->countSearchResultRecord($keyword, 'ALLPRICE') / $this->pageLimit),
-                'CurrentPage' => $page
+                'TotalResult' => $this->model->countSearchResultRecord($keyword, $order),
+                'CurrentPage' => $page,
+                'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
+                'PaginationType' => 'searchProductsPerPage',
             ]);
         }
     }
@@ -49,7 +52,35 @@ class SearchController extends Controller
             'Keyword' => $keyword,
             'OrderType' => $order,
             'TotalPage' => ceil($this->model->countSearchResultRecord($keyword, $order) / $this->pageLimit),
-            'CurrentPage' => $page
+            'TotalResult' => $this->model->countSearchResultRecord($keyword, $order),
+            'CurrentPage' => $page,
+            'PaginationType' => 'searchProductsPerPage',
+            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu()
         ]);
     }
+
+    public function searchLoaiDanThuongHieu($secretParam) {
+        $arrOfParam = explode('-', $secretParam);
+
+        $loaidan_id = $arrOfParam[0];
+        $thuonghieu_id = $arrOfParam[1];
+        $sortType = $arrOfParam[2];
+
+        $page = $arrOfParam[3];
+
+        $this->view('Master', [
+            'Content'=>'Search',
+            'DBData'=>$this->model->fetchAllFilteredProductPerPage($thuonghieu_id, $loaidan_id, $sortType, $page, $this->pageLimit),
+            'TotalPage' => ceil($this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) / $this->pageLimit),
+            'TotalResult' => $this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType),
+            'CurrentPage' => $page,
+            'Title'=>'Thông tin sản phẩm',
+            '$thuonghieu_id' => $thuonghieu_id,
+            '$loaidan_id' => $loaidan_id,
+            '$sortType' => $sortType,
+            'PaginationType' => 'searchLoaiDanThuongHieu',
+            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
+        ]);
+    }
+
 }

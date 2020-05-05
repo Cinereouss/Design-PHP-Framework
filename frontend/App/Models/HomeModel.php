@@ -50,11 +50,7 @@ class HomeModel extends Model {
         return $this->db->table('sanpham')->limit($limit)->offset($start)->findSomeFields(['id', 'image', 'ten', 'giasp', 'tomtat']);
     }
 
-    public function fetchAllThuongHieu() {
-        return $this->db->table('thuonghieu')->findAll();
-    }
-
-    public function fetchAllLoaiDan() {
-        return $this->db->table('loaidan')->findAll();
+    public function fetchLoaiDanThuongHieu() {
+        return $this->db->findLoaiDanThuongHieu();
     }
 }

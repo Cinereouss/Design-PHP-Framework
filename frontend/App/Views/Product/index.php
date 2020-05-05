@@ -22,86 +22,45 @@
 <!-- Guitar Catagories -->
 <section class="guitar-catagories-btl">
     <div class="container">
-        <h1><ion-icon name="musical-note"></ion-icon>- ĐÀN GUITAR</h1>
+        <h1>
+            <ion-icon name="musical-note"></ion-icon>
+            - ĐÀN GUITAR
+        </h1>
         <ul class="row">
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ACOUSTIC
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR CLASSIC
-                    </a>
+            <?php
+            foreach ($arrLoaiDan as $record):
+                ?>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ELECTRIC
-                    </a>
+                <li class="col-6 col-lg-2 col-md-4 col-sm-6">
+                    <div class="dropdown dropdown-categories">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= strtoupper($record->ten) ?>
+                        </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR BASE
-                    </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        UKULELE
-                    </a>
+                            <?php
+                            foreach ($data['ThuongHieuLoai'] as $row) {
+                                if($row->idLoaiDan == $record->id) {
+                                    $tenThuongHieu = 'Đàn '.$row->tenThuongHieu.'-'.$record->ten;
+                                    $secretSearchParam = $record->id.'-'.$row->idThuongHieu.'-ALLPRICE-1';
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR SYNTHESIZER
-                    </a>
+                                    echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretSearchParam.'">'.$tenThuongHieu.'</a>';
+                                }
+                            }
+                            ?>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo '/Search/searchLoaiDanThuongHieu/'.$record->id.'-0-ALLPRICE-1' ?>">Tìm tất cả đàn <?= $record->ten ?></a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+
+            <?php
+            endforeach;
+            ?>
         </ul>
     </div>
 </section>

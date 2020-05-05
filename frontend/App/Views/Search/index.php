@@ -27,90 +27,40 @@
             - ĐÀN GUITAR
         </h1>
         <ul class="row">
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ACOUSTIC
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR CLASSIC
-                    </a>
+            <?php
+            foreach ($arrLoaiDan as $record):
+                ?>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ELECTRIC
-                    </a>
+                <li class="col-6 col-lg-2 col-md-4 col-sm-6">
+                    <div class="dropdown dropdown-categories">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= strtoupper($record->ten) ?>
+                        </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR BASE
-                    </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        UKULELE
-                    </a>
+                            <?php
+                            foreach ($data['ThuongHieuLoai'] as $row) {
+                                if($row->idLoaiDan == $record->id) {
+                                    $tenThuongHieu = 'Đàn '.$row->tenThuongHieu.'-'.$record->ten;
+                                    $secretSearchParam = $record->id.'-'.$row->idThuongHieu.'-ALLPRICE-1';
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR SYNTHESIZER
-                    </a>
+                                    echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretSearchParam.'">'.$tenThuongHieu.'</a>';
+                                }
+                            }
+                            ?>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo '/Search/searchLoaiDanThuongHieu/'.$record->id.'-0-ALLPRICE-1' ?>">Tìm tất cả đàn <?= $record->ten ?></a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+
+            <?php
+            endforeach;
+            ?>
         </ul>
     </div>
 </section>
@@ -120,10 +70,33 @@
 <section class="filter-btl">
     <div class="container clear-fix">
         <div class="left-filter-btl">
-            <span>Kết quả tìm kiếm với từ khóa "<?php echo $data['Keyword'] ?>" <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon></span>
+            <span>Kết quả tìm kiếm cho "
+                <?php
+                if($data['PaginationType'] == 'searchLoaiDanThuongHieu') {
+                    $keywordLoaiDanThuongHieu = 'Đàn ';
+
+                    foreach ($arrThuongHieu as $record){
+                        if($record->id == $data['$thuonghieu_id']) {
+                            $keywordLoaiDanThuongHieu .= $record->ten.'-';
+                        }
+                    }
+
+                    foreach ($arrLoaiDan as $record){
+                        if($record->id == $data['$loaidan_id']) {
+                            $keywordLoaiDanThuongHieu .= $record->ten;
+                        }
+                    }
+
+                    echo $keywordLoaiDanThuongHieu;
+
+                } else {
+                    echo $data['Keyword'];
+                }
+                ?>" <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+            </span>
             <div class="btn-group">
                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Có <?php echo $data['TotalPage'] ?> sản phẩm
+                    Có <?php echo $data['TotalResult'] ?> sản phẩm
                 </button>
             </div>
         </div>
@@ -133,8 +106,18 @@
                     Sắp xếp theo giá
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/Search/searchProductsPerPage/<?php echo $data['Keyword'].'-ASC-1' ?>">Giá tiền từ thấp tới cao</a>
-                    <a class="dropdown-item" href="/Search/searchProductsPerPage/<?php echo $data['Keyword'].'-DESC-1' ?>">Giá tiền từ cao tới thấp</a>
+
+                    <?php
+                    if($data['PaginationType'] == 'searchProductsPerPage') {
+                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-ASC-1">Giá tiền từ thấp tới cao</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-DESC-1">Giá tiền từ cao tới thấp</a>';
+                    } else {
+                        $secretKeyword = $data['$loaidan_id'].'-'.$data['$thuonghieu_id'];
+                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-ASC-1">Giá tiền từ thấp tới cao</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-DESC-1">Giá tiền từ cao tới thấp</a>';
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
@@ -183,7 +166,12 @@
             <ul class="pagination justify-content-center">
 
                 <?php
-                $secretParam = '/Search/searchProductsPerPage/'.$data['Keyword'].'-'.$data['OrderType'].'-';
+
+                if($data['PaginationType'] == 'searchLoaiDanThuongHieu'){
+                    $secretParam = '/Search/searchLoaiDanThuongHieu/'.$data['$loaidan_id'].'-'.$data['$thuonghieu_id'].'-'.$data['$sortType'].'-';
+                } else {
+                    $secretParam = '/Search/searchProductsPerPage/'.$data['Keyword'].'-'.$data['OrderType'].'-';
+                }
 
                 // Previous
                 if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){

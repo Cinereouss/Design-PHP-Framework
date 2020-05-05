@@ -57,4 +57,8 @@ class CartModel extends Model {
         $_SESSION['cart'] = $cart;
     }
 
+    public function fetchLoaiDanThuongHieu() {
+        return $this->db->findLoaiDanThuongHieu();
+    }
+
 }

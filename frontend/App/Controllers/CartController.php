@@ -11,7 +11,8 @@ CartController extends Controller {
         $this->view('Master', [
             'Content' => 'Cart',
             'Title'=>'Thông tin giỏ hàng',
-            'DBData'=>$this->model->showCartDetail()
+            'DBData'=>$this->model->showCartDetail(),
+            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu()
         ]);
     }
 

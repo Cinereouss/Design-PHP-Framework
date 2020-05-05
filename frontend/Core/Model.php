@@ -240,6 +240,23 @@ class Model
         return $returnData;
     }
 
+    public function findLoaiDanThuongHieu() {
+        $sql = "select loaidan.ten as tenLoaiDan, loaidan.id as idLoaiDan, thuonghieu.ten as tenThuongHieu, thuonghieu.id as idThuongHieu from thuonghieu
+        inner join thuonghieuloai on thuonghieu.id = thuonghieuloai.thuonghieu_id
+        inner join loaidan on thuonghieuloai.loaidan_id = loaidan.id";
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
 }
 
 ?>

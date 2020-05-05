@@ -34,7 +34,7 @@
 
                             <?php
                             foreach ($arrLoaiDan as $record){
-                                echo '<a class="dropdown-item" href="#">'.$record->ten.'</a>';
+                                echo '<a class="dropdown-item" href="#">Guitar '.$record->ten.'</a>';
                             }
                             ?>
                         </div>
