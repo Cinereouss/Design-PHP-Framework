@@ -73,26 +73,26 @@
             <span>Kết quả tìm kiếm cho "
                 <?php
                 if($data['PaginationType'] == 'searchLoaiDanThuongHieu') {
-                    $keywordLoaiDanThuongHieu = 'Đàn ';
+                    $arrKeyword = [];
 
                     foreach ($arrThuongHieu as $record){
                         if($record->id == $data['$thuonghieu_id']) {
-                            $keywordLoaiDanThuongHieu .= $record->ten.'-';
+                            array_push($arrKeyword,$record->ten);
                         }
                     }
 
                     foreach ($arrLoaiDan as $record){
                         if($record->id == $data['$loaidan_id']) {
-                            $keywordLoaiDanThuongHieu .= $record->ten;
+                            array_push($arrKeyword,$record->ten);
                         }
                     }
 
-                    echo $keywordLoaiDanThuongHieu;
+                    echo 'Đàn '.implode('-', $arrKeyword);
 
                 } else {
                     echo $data['Keyword'];
                 }
-                ?>" <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+                ?> " <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </span>
             <div class="btn-group">
                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -21,7 +21,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
                             foreach ($arrThuongHieu as $record){
-                                echo '<a class="dropdown-item" href="#">Guitar '.$record->ten.'</a>';
+                                echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/0-'.$record->id.'-ALLPRICE-1">Guitar '.$record->ten.'</a>';
                             }
                             ?>
                         </div>
@@ -34,7 +34,7 @@
 
                             <?php
                             foreach ($arrLoaiDan as $record){
-                                echo '<a class="dropdown-item" href="#">Guitar '.$record->ten.'</a>';
+                                echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$record->id.'-0-ALLPRICE-1">Guitar '.$record->ten.'</a>';
                             }
                             ?>
                         </div>
