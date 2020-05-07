@@ -30,6 +30,9 @@ class ProductModel extends Model
             $item->thuonghieu_id = $this->db->table('thuonghieu')->findWhere([
                 'id'=>$item->thuonghieu_id
             ])[0]->ten;
+            $item->loaidan_id = $this->db->table('loaidan')->findWhere([
+                'id'=>$item->loaidan_id
+            ])[0]->ten;
         }
         return $result;
     }

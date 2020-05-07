@@ -1,5 +1,7 @@
 <?php
-class ProductController extends Controller{
+
+class ProductController extends Controller
+{
     private $model;
 
     public function __construct()
@@ -7,28 +9,25 @@ class ProductController extends Controller{
         $this->model = $this->model('Product');
     }
 
-    public function index(){
+    public function index()
+    {
         $this->view('Master', [
-            'Content'=>'Product',
-            'data'=>$this->model->getProduct()
+            'Content' => 'Product',
+            'Title' => 'Kho hàng và sản phẩm',
+            'data' => $this->model->getProduct()
         ]);
     }
 
 
-    public function createProduct(){
-        if(isset($_POST) && isset($_POST['btnSubmit'])){
-           $ten = $_POST['product-name'];
-           $ma = $_POST['product-id'];
-           $gia = $_POST['product-price'];
-           $video = $_POST['product-video'];
-           $mota = $_POST['description'];
-           $thongso = $_POST['product-specs'];
-           if($this->model->insertProduct($ten, $ma, $gia, $video, $mota, $thongso)){
-               return $this->index();
-           }
-           else{
-               echo 'thất bại';
-           }
+    public function createOrEdit()
+    {
+        if (isset($_POST['Confirm'])) {
+            $content = 'Thêm mới sản phẩm';
+            echo json_encode([
+                'Header' => '<h2 style="">Thêm mới sản phẩm</h2>',
+                'Body' => $content
+            ]);
         }
     }
+
 }
