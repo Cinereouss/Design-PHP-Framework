@@ -3,16 +3,19 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/Home">Trang chủ</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Sản phẩm</a>
+                <a href="javascript:history.back()">Chi tiết sản phẩm</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Đàn guitar</a>
+                <a href="#">Đặt hàng</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+            </li>
+            <li>
+                <a href="/Product/showDetail/<?php echo $data['DBData'][0]->id ?>"><?php echo $data['DBData'][0]->ten ?></a>
             </li>
         </ul>
     </div>

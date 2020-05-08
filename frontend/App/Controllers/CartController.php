@@ -18,7 +18,7 @@ CartController extends Controller {
 
     public function add($idProduct) {
         $this->model->addToCart($idProduct);
-        header('Location: /Cart/index');
+        header('Location: /Cart/index#product-added');
     }
 
     public function update($params) {

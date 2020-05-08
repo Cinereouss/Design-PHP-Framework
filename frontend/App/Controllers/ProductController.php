@@ -10,13 +10,17 @@ class ProductController extends Controller {
 
     public function index(){
         $this->view('Master', [
-            'Content'=>'Product',
-            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
-            'Title'=>'Chi tiết sản phẩm'
+            'Content'=>'Error',
+            'Title'=>'Lỗi'
         ]);
     }
 
     public function showDetail($idProduct) {
+
+        if(count($this->model->fetchProductDetail($idProduct)) == 0) {
+            header("Location: /Error");
+        }
+
         $this->view('Master', [
             'Content'=>'Product',
             'DBData'=>$this->model->fetchProductDetail($idProduct),

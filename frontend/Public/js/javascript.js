@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 // Submit a form (email)
 const notifyGenerator = (typeOfNotify, text) => {
-    return `<div class="alert ${typeOfNotify} alert-dismissible fade show fixed-top" style="width: 50%; margin: 0 auto" role="alert">
+    return `<div class="alert ${typeOfNotify} alert-dismissible fade show fixed-top" style="width: 50%; margin: 0 auto; text-align: center" role="alert">
       ${text}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -123,8 +123,15 @@ $(document).ready(function() {
                 showCustomizeAlert('alert-danger', 'Không cập nhật được khi giỏ hàng còn trống');
             } else {
                 let secretParams = '';
+                let invalidNumOfPro = 0;
                 $('.table-cart input').each( function () {
-                    secretParams = secretParams + $(this).attr('id').split('-')[1] + '*' + $(this).val() + '-';
+                    if ($(this).val() > 10) {
+                        invalidNumOfPro = 10;
+                    } else {
+                        invalidNumOfPro = $(this).val();
+                    }
+
+                    secretParams = secretParams + $(this).attr('id').split('-')[1] + '*' + invalidNumOfPro + '-';
                 })
                 window.location.pathname = `/Cart/update/${secretParams}`;
             }
@@ -142,5 +149,30 @@ $(document).ready(function() {
                 window.location.pathname = `/Order/index`;
             }
         });
+    }
+});
+
+//Search form validation
+function validateSearchForm() {
+    const x = document.forms["searchForm"]["searchKeyword"].value;
+    if (x == "" || x == null) {
+        showCustomizeAlert('alert-danger', 'Nhập từ khóa trước khi tìm kiếm sản phẩm');
+        return false;
+    }
+}
+
+//Alert for filter
+$(document).ready(function() {
+    if (window.location.hash === '#done-filtered') {
+        showCustomizeAlert('alert-success', 'Lọc sản phẩm thành công');
+        window.location.hash = '';
+    }
+});
+
+//Alert for add to cart
+$(document).ready(function() {
+    if (window.location.hash === '#product-added') {
+        showCustomizeAlert('alert-success', 'Đã thêm một sản phẩm vào giỏ hàng');
+        window.location.hash = '';
     }
 });

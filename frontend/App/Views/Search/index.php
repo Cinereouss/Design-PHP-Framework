@@ -3,7 +3,11 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/Home">Trang chủ</a>
+                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+            </li>
+            <li>
+                <a href="#">Tìm kiếm</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
@@ -11,8 +15,28 @@
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Đàn guitar</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+
+                <?php
+                if($data['PaginationType'] == 'searchLoaiDanThuongHieu') {
+                    $arrKeyword = [];
+
+                    foreach ($arrThuongHieu as $record){
+                        if($record->id == $data['$thuonghieu_id']) {
+                            array_push($arrKeyword,$record->ten);
+                        }
+                    }
+
+                    foreach ($arrLoaiDan as $record){
+                        if($record->id == $data['$loaidan_id']) {
+                            array_push($arrKeyword,$record->ten);
+                        }
+                    }
+
+                    echo '<a href="#">'.'Đàn '.implode('-', $arrKeyword).'</a>';
+                } else {
+                    echo '<a href="#">'.$data['Keyword'].'</a>';
+                }
+                ?>
             </li>
         </ul>
     </div>
@@ -109,12 +133,12 @@
 
                     <?php
                     if($data['PaginationType'] == 'searchProductsPerPage') {
-                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-ASC-1">Giá tiền từ thấp tới cao</a>';
-                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-DESC-1">Giá tiền từ cao tới thấp</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-ASC-1#done-filtered">Giá tiền từ thấp tới cao</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchProductsPerPage/'.$data['Keyword'].'-DESC-1#done-filtered">Giá tiền từ cao tới thấp</a>';
                     } else {
                         $secretKeyword = $data['$loaidan_id'].'-'.$data['$thuonghieu_id'];
-                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-ASC-1">Giá tiền từ thấp tới cao</a>';
-                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-DESC-1">Giá tiền từ cao tới thấp</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-ASC-1#done-filtered">Giá tiền từ thấp tới cao</a>';
+                        echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretKeyword.'-DESC-1#done-filtered">Giá tiền từ cao tới thấp</a>';
                     }
                     ?>
 

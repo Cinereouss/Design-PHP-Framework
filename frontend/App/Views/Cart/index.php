@@ -3,16 +3,11 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/Home">Trang chủ</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Sản phẩm</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
-            </li>
-            <li>
-                <a href="#">Đàn guitar</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+                <a href="/Cart">Giỏ hàng</a>
             </li>
         </ul>
     </div>
@@ -99,8 +94,8 @@
                     foreach ($data['DBData'] as $idProduct => $details) {
                         echo '<tr>';
                         echo '<th scope="row">'.$countProduct.'</th>';
-                        echo '<td><img src="/public/image/'.$details['image'].'" alt="product-image"></td>';
-                        echo '<td>'.$details['ten'].'</td>';
+                        echo '<td><a href="/Product/showDetail/'.$idProduct.'"><img src="/public/image/'.$details['image'].'" alt="product-image"></a></td>';
+                        echo '<td><a href="/Product/showDetail/'.$idProduct.'">'.$details['ten'].'</a></td>';
                         echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
                         echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
                         echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';

@@ -55,7 +55,7 @@
                             <?php
                             if (!empty($_SESSION['cart'])) {
                                 foreach ($_SESSION['cart'] as $idProduct => $detail) {
-                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'">'.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
+                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'"><img src="/Public/image/'.$detail['image'].'" alt="img-in-cart" height="70px" width=auto> | '.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
                                 }
                             } else {
                                 echo '<a class="dropdown-item" href="/Cart/index">Giỏ hàng trống</a>';
@@ -63,11 +63,11 @@
                             ?>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Cart/index">Xem chi tiết giỏ hàng</a>
+                            <a class="dropdown-item" href="/Cart/index" style="text-align: center">Xem chi tiết giỏ hàng</a>
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="/Search/searchProducts/1" method="POST">
+                <form class="form-inline my-2 my-lg-0" action="/Search/searchProducts/1" method="POST" onsubmit="return validateSearchForm()" name="searchForm">
                     <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search" name="searchKeyword">
                     <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" name="btn-search-product">Tìm kiếm</button>
                 </form>

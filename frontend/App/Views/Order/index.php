@@ -3,16 +3,15 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/Home">Trang chủ</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Sản phẩm</a>
+                <a href="/Cart">Giỏ hàng</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Đàn guitar</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+                <a href="/Order">Đặt hàng</a>
             </li>
         </ul>
     </div>

@@ -44,15 +44,7 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
-            </li>
-            <li>
-                <a href="#">Sản phẩm</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
-            </li>
-            <li>
-                <a href="#">Đàn guitar</a>
+                <a href="/Home">Trang chủ Guitar H2D</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
         </ul>
@@ -110,7 +102,7 @@
 <!--Filter -->
 <section class="filter-btl">
     <div class="container clear-fix">
-        <form action="/Home/sort/1" method="POST">
+        <form action="/Home/sort/1#done-filtered" method="POST">
             <div class="left-filter-btl">
                 <span>Tìm theo <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon></span>
                 <div class="btn-group">
@@ -198,7 +190,7 @@
                 <?php
                 if($data['PaginationType'] == 'page') {
                     // Previous
-                    if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1){
+                    if ($data['CurrentPage'] > 1 && $data['TotalPage'] > 1 && $data['CurrentPage'] <= $data['TotalPage']){
                         echo '<li class="page-item">
                     <a class="page-link" href="/Home/'.$data['PaginationType'].'/'.($data['CurrentPage'] - 1).'" tabindex="-1" aria-disabled="true">Trước</a>
                     </li>';
@@ -214,7 +206,7 @@
                     }
 
                     // Next
-                    if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1){
+                    if ($data['CurrentPage'] < $data['TotalPage'] && $data['TotalPage'] > 1 && $data['CurrentPage'] <= $data['TotalPage'] && $data['CurrentPage'] > 0){
                         echo '<li class="page-item">
                     <a class="page-link" href="/Home/'.$data['PaginationType'].'/'.($data['CurrentPage'] + 1).'">Tiếp</a>
                     </li>';

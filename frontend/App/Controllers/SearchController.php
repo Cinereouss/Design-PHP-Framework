@@ -15,7 +15,7 @@ class SearchController extends Controller
     {
         $this->view('Master', [
             'Content' => 'Error',
-            'Title' => 'Không tìm thấy trang này'
+            'Title' => 'Lỗi'
         ]);
     }
 
