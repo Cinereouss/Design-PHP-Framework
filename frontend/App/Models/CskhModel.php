@@ -9,7 +9,7 @@ class CskhModel extends Model {
 
     public function addNewCustomer($email) {
         $result =  $this->db->table('cskh')->insert(['mail' => $email, 'status' => 'Chưa hỗ trợ']);
-        return $result > 0 ? true : false;
+        return $result > 0;
     }
 
 }

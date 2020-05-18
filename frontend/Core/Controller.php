@@ -14,4 +14,15 @@ class Controller
 
         require_once ("./App/Views/".$view."/index.php");
     }
+
+    function sanitize_xss($value) {
+        return htmlspecialchars(strip_tags($value));
+    }
+
+    function renderErrorPage() {
+        $this->view('Master', [
+            'Content' => 'Error',
+            'Title'=>'Lỗi'
+        ]);
+    }
 }

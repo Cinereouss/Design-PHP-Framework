@@ -185,13 +185,13 @@ class Model
     public function findAllFilteredProducts($thuonghieu_id, $loaidan_id, $order)
     {
         if($order != 'ALLPRICE') {
-            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE '$thuonghieu_id' AND loaidan_id LIKE '$loaidan_id' ORDER BY giasp $order LIMIT ? OFFSET ?";
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id = ? OR loaidan_id = ? ORDER BY giasp $order LIMIT ? OFFSET ?";
         } else {
-            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE '$thuonghieu_id' AND loaidan_id LIKE '$loaidan_id' LIMIT ? OFFSET ?";
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id = ? OR loaidan_id = ? LIMIT ? OFFSET ?";
         }
 
         $this->statement = $this->connection->prepare($sql);
-        $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->bind_param('iiii',$thuonghieu_id, $loaidan_id, $this->limit, $this->offset);
         $this->statement->execute();
         $this->resetQuery();
 
@@ -220,15 +220,16 @@ class Model
     }
 
     public function findLikeAnOrder($field, $text, $order) {
+        $text = '%'.$text.'%';
 
         if($order != 'ALLPRICE') {
-            $sql = "SELECT * FROM $this->table WHERE $field LIKE '%$text%' ORDER BY giasp $order LIMIT ? OFFSET ?";
+            $sql = "SELECT * FROM $this->table WHERE $field LIKE ? ORDER BY giasp $order LIMIT ? OFFSET ?";
         } else {
-            $sql = "SELECT * FROM $this->table WHERE $field LIKE '%$text%' LIMIT ? OFFSET ?";
+            $sql = "SELECT * FROM $this->table WHERE $field LIKE ? LIMIT ? OFFSET ?";
         }
 
         $this->statement = $this->connection->prepare($sql);
-        $this->statement->bind_param('ii',$this->limit, $this->offset);
+        $this->statement->bind_param('sii',$text, $this->limit, $this->offset);
         $this->statement->execute();
         $this->resetQuery();
 

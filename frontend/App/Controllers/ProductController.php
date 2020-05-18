@@ -18,15 +18,15 @@ class ProductController extends Controller {
     public function showDetail($idProduct) {
 
         if(count($this->model->fetchProductDetail($idProduct)) == 0) {
-            header("Location: /Error");
+            $this->renderErrorPage();
+        } else {
+            $this->view('Master', [
+                'Content' => 'Product',
+                'DBData' => $this->model->fetchProductDetail($idProduct),
+                'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
+                'Title' => 'Chi tiết sản phẩm'
+            ]);
         }
-
-        $this->view('Master', [
-            'Content'=>'Product',
-            'DBData'=>$this->model->fetchProductDetail($idProduct),
-            'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
-            'Title'=>'Chi tiết sản phẩm'
-        ]);
     }
 
 }

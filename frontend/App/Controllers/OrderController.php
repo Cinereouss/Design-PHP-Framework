@@ -43,12 +43,12 @@ class OrderController extends Controller {
 
     public function executeOneProductOrder($idProduct) {
         if (isset($_POST['datHang'])) {
-            $ten = $_POST['fullname'];
-            $mail = $_POST['email'];
-            $sdt = $_POST['phone'];
-            $diachi = $_POST['address'];
+            $ten = $this->sanitize_xss($_POST['fullname']);
+            $mail = $this->sanitize_xss($_POST['email']);
+            $sdt = $this->sanitize_xss($_POST['phone']);
+            $diachi = $this->sanitize_xss($_POST['address']);
             $ngay = date("Y-m-d H:i:s");
-            $ghichu = $_POST['note'];
+            $ghichu = $this->sanitize_xss($_POST['note']);
             $tinhtrang = 'Chưa xét duyệt';
 
             $productData  = $this->model->fetchProductDetail($idProduct);
@@ -89,12 +89,12 @@ class OrderController extends Controller {
 
     public function executeOrder() {
         if (isset($_POST['datHang'])) {
-            $ten = $_POST['fullname'];
-            $mail = $_POST['email'];
-            $sdt = $_POST['phone'];
-            $diachi = $_POST['address'];
+            $ten = $this->sanitize_xss($_POST['fullname']);
+            $mail = $this->sanitize_xss($_POST['email']);
+            $sdt = $this->sanitize_xss($_POST['phone']);
+            $diachi = $this->sanitize_xss($_POST['address']);
             $ngay = date("Y-m-d H:i:s");
-            $ghichu = $_POST['note'];
+            $ghichu = $this->sanitize_xss($_POST['note']);
             $tinhtrang = 'Chưa xét duyệt';
             $tongtien = $this->calculateTotalPrice();
             $arrChiTietDonHang = [];

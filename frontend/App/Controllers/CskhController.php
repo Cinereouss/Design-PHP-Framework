@@ -9,7 +9,7 @@ class CskhController extends Controller {
 
     public function addNew() {
         if(isset($_POST['submit'])){
-            $email = $_POST['customer_email'];
+            $email = $this->sanitize_xss($_POST['customer_email']);
             if($this->model->addNewCustomer($email)) {
                 header('Location: /Home/#submit-success');
             }else{

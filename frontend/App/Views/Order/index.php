@@ -28,16 +28,20 @@
                 <hr>
                 <div class="form-group mb-2">
                     <label for="fullname">Họ tên</label>
-                    <input class="form-control" type="text" maxlength="100" name="fullname" value="">
+                    <input class="form-control" type="text" maxlength="100" name="fullname" value="" required oninvalid="this.setCustomValidity('Không được để trống trường này')"
+                           oninput="setCustomValidity('')">
                     <label for="email">Email</label>
-                    <input class="form-control" type="email" value="" maxlength="100" name="email">
+                    <input class="form-control" type="email" value="" maxlength="100" name="email" required oninvalid="this.setCustomValidity('Không được để trống trường này')"
+                           oninput="setCustomValidity('')">
                 </div>
 
                 <div class="form-group mb-2">
                     <label for="address">Địa chỉ</label>
-                    <input class="form-control" type="text" maxlength="200" name="address" value="">
+                    <input class="form-control" type="text" maxlength="200" name="address" value="" required oninvalid="this.setCustomValidity('Không được để trống trường này')"
+                           oninput="setCustomValidity('')">
                     <label for="phone">Số điện thoại</label>
-                    <input class="form-control" type="tel" maxlength="13" name="phone" value="">
+                    <input class="form-control" type="tel" maxlength="13" name="phone" value="" required oninvalid="this.setCustomValidity('Không được để trống trường này')"
+                           oninput="setCustomValidity('')">
                 </div>
 
                 <div class="form-group mb-2">

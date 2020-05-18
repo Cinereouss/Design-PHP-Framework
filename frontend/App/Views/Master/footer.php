@@ -20,7 +20,8 @@
 
                 <form class="form-inline" method="POST" action="/Cskh/addNew">
                     <div class="form-group mb-2">
-                        <input type="email" class="form-control" name="customer_email">
+                        <input type="email" class="form-control" name="customer_email" required oninvalid="this.setCustomValidity('Định dạng email không hợp lệ')"
+                               oninput="setCustomValidity('')">
                     </div>
                     <button id="submit_email" type="submit" class="btn btn-secondary mb-2" name="submit">ĐĂNG KÝ</button>
                 </form>
