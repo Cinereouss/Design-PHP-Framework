@@ -18,7 +18,7 @@ class App
         require_once ("./App/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;
         //Router Action
-        if(isset($url[1])){
+        if(isset($url[2])){
             if(method_exists($this->controller, $url[2])){
                 $this->action = $url[2];
             }

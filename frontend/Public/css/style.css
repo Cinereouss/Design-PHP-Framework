@@ -6,7 +6,7 @@
 
 html,
 body {
-    font-family: "Lato", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     overflow-x: hidden;
     background-color: rgb(248, 249, 250);
@@ -102,7 +102,7 @@ h1 {
 
 .dropdown-categories a {
     width: 100%;
-    font-size: 90%;
+    font-size: 100%;
 }
 
 .left-filter-btl {
@@ -116,6 +116,22 @@ h1 {
 .filter-btl .clear-fix {
     background-color: #ffc107;
     border-radius: 4px;
+}
+
+.filter-btl button {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.filter-btl .btn-customize-secondary {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.filter-btl .btn-customize-secondary:hover {
+    background-color: #dae0e5;
+    border-color: #dae0e5;
 }
 
 .section-product .card {
@@ -653,4 +669,70 @@ form label {
 h5 {
     font-weight: bold;
     text-transform: uppercase;
+}
+
+/*CART*/
+.num-in-cart {
+    text-align: center;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+    border-radius: 10%;
+    padding: 2px 4px ;
+    font-weight: bold;
+}
+
+/* ERROR */
+.error-container {
+    margin: 30px 0px;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #b9b9b9;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    transition: box-shadow 0.5s;
+}
+
+.error-container:hover {
+    box-shadow: 5px 5px 5px #b9b9b9;
+}
+
+.error-container img {
+    display: block;
+    width: 30%;
+    height: auto;
+    margin: 10px auto;
+}
+
+.error-container h2 {
+    color: #ff6584;
+    font-size: 150%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* SUCCESS PURCHASE */
+.success-purchase-container {
+    margin: 30px 0px;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #b9b9b9;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    transition: box-shadow 0.5s;
+}
+
+.success-purchase-container:hover {
+    box-shadow: 5px 5px 5px #b9b9b9;
+}
+
+.success-purchase-container img {
+    display: block;
+    width: 30%;
+    height: auto;
+    margin: 10px auto;
+}
+
+.success-purchase-container h2 {
+    color: #218838;
+    font-size: 150%;
+    text-align: center;
+    margin-bottom: 40px;
 }

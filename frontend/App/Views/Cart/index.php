@@ -3,16 +3,11 @@
     <div class="container">
         <ul>
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/Home">Trang chủ</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="#">Sản phẩm</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
-            </li>
-            <li>
-                <a href="#">Đàn guitar</a>
-                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+                <a href="/Cart">Giỏ hàng</a>
             </li>
         </ul>
     </div>
@@ -22,86 +17,45 @@
 <!-- Guitar Catagories -->
 <section class="guitar-catagories-btl">
     <div class="container">
-        <h1><ion-icon name="musical-note"></ion-icon>- ĐÀN GUITAR</h1>
+        <h1>
+            <ion-icon name="musical-note"></ion-icon>
+            - ĐÀN GUITAR
+        </h1>
         <ul class="row">
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ACOUSTIC
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR CLASSIC
-                    </a>
+            <?php
+            foreach ($arrLoaiDan as $record):
+                ?>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR ELECTRIC
-                    </a>
+                <li class="col-6 col-lg-2 col-md-4 col-sm-6">
+                    <div class="dropdown dropdown-categories">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= strtoupper($record->ten) ?>
+                        </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR BASE
-                    </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        UKULELE
-                    </a>
+                            <?php
+                            foreach ($data['ThuongHieuLoai'] as $row) {
+                                if($row->idLoaiDan == $record->id) {
+                                    $tenThuongHieu = 'Đàn '.$row->tenThuongHieu.'-'.$record->ten;
+                                    $secretSearchParam = $record->id.'-'.$row->idThuongHieu.'-ALLPRICE-1';
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-6 col-lg-2 col-md-4 col-sm-6">
-                <div class="dropdown dropdown-categories">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GUITAR SYNTHESIZER
-                    </a>
+                                    echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretSearchParam.'">'.$tenThuongHieu.'</a>';
+                                }
+                            }
+                            ?>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo '/Search/searchLoaiDanThuongHieu/'.$record->id.'-0-ALLPRICE-1' ?>">Tìm tất cả đàn <?= $record->ten ?></a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+
+            <?php
+            endforeach;
+            ?>
         </ul>
     </div>
 </section>
@@ -122,22 +76,36 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td><img src="./public/image/product-1.jpg" alt="product-1"></td>
-                <td>GREG BENNETT GD-100SCE</td>
-                <td>10.710.000 VNĐ</td>
-                <td><input style="width: 40px;" type="number" value="1" min="0" max="10"></td>
-                <td>10.710.000 VNĐ</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td><img src="./public/image/product-2.jpg" alt="product-1"></td>
-                <td>GREG BENNETT GD-100SCE</td>
-                <td>10.710.000 VNĐ</td>
-                <td><input style="width: 40px;" type="number" value="1" min="0" max="10"></td>
-                <td>10.710.000 VNĐ</td>
-            </tr>
+
+            <?php
+                if (empty($data['DBData'])){
+                    echo '<tr id="check-empty-cart-jq">
+                <td>0</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>Trống</td>
+                <td>0</td>
+                </tr>';
+
+                    require_once 'empty.php';
+                } else {
+                    $countProduct = 1;
+                    foreach ($data['DBData'] as $idProduct => $details) {
+                        echo '<tr>';
+                        echo '<th scope="row">'.$countProduct.'</th>';
+                        echo '<td><a href="/Product/showDetail/'.$idProduct.'"><img src="/public/image/'.$details['image'].'" alt="product-image"></a></td>';
+                        echo '<td><a href="/Product/showDetail/'.$idProduct.'">'.$details['ten'].'</a></td>';
+                        echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
+                        echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                        echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
+                        echo '</tr>';
+
+                        $countProduct++;
+                    }
+
+                }
+            ?>
             </tbody>
         </table>
     </div>
@@ -145,14 +113,24 @@
     <!-- Total price -->
     <div class="clear-fix">
         <div class="total-price-container">
-            <h1>TỔNG GIÁ TRỊ: <span id="total-price">53.980.000Đ</span></h1>
-            <a href="#" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
-            <a href="/Order" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
+
+            <?php
+            $totalPrice = 0;
+            if(!empty($data['DBData'])){
+                foreach ($data['DBData'] as $idProduct => $details) {
+                    $totalPrice += $details['thanhtien'];
+                }
+            }
+            echo '<h1>TỔNG GIÁ TRỊ ĐƠN HÀNG: <span id="total-price" class="home-price">'.$totalPrice.' VNĐ</span></h1>';
+            ?>
+
+            <a id="btn-update-cart" href="javascript:void(0)" class="btn btn-outline-success" style="width: 49%; margin-top: 10px;">Cập nhật giỏ hàng</a>
+            <a id="btn-order-now" href="javascript:void(0)" class="btn btn-success" style="width: 49%; margin-top: 10px;" >Đặt hàng ngay</a>
         </div>
     </div>
     <!-- End total price -->
 
-    <p style="margin-bottom: 30px;">*Click vào <strong>“Cập nhật giỏ hàng”</strong> để cập nhật số lượng. Nhập vào số lượng 0 để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất mua hàng.</p>
+    <p style="margin-bottom: 30px;">*Click vào <strong>“Cập nhật giỏ hàng”</strong> để cập nhật số lượng. Nhập vào số lượng 0 để xóa sản phẩm khỏi giỏ hàng. Nhấn vào <strong>“Đặt hàng ngay”</strong> để tiến hành đặt hàng.</p>
 
 </div>
 <!-- End cart detail -->

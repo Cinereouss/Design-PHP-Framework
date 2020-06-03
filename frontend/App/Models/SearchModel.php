@@ -1,5 +1,5 @@
 <?php
-class HomeModel extends Model {
+class SearchModel extends Model {
     private $db;
 
     public function __construct()
@@ -7,12 +7,14 @@ class HomeModel extends Model {
         $this->db = new Model();
     }
 
-    public function fetchAllProduct() {
-        return $this->db->table('sanpham')->findSomeFields(['id', 'image', 'ten', 'giasp', 'tomtat']);
+    public function fetchProductDetailResultPerPage($keyword, $page, $limit, $order) {
+        $start = ($page - 1) * $limit;;
+
+        return $this->db->table('sanpham')->limit($limit)->offset($start)->findLikeAnOrder('ten', $keyword, $order);
     }
 
-    public function fetchAllSlides() {
-        return $this->db->table('slide')->findAll();
+    public function countSearchResultRecord($keyword, $order) {
+        return count($this->db->table('sanpham')->findLikeAnOrder('ten', $keyword, $order));
     }
 
     public function fetchAllFilteredProductPerPage($thuonghieu_id, $loaidan_id, $sortType, $page, $limit) {
@@ -39,15 +41,6 @@ class HomeModel extends Model {
         }
 
         return count($this->db->table('sanpham')->findAllFilteredProducts($thuonghieu_id, $loaidan_id, $sortType));
-    }
-
-    public function countTotalRecord() {
-        return $this->db->table('sanpham')->countRecord();
-    }
-
-    public function fetchAllProductPerPage($page, $limit) {
-        $start = ($page - 1) * $limit;
-        return $this->db->table('sanpham')->limit($limit)->offset($start)->findSomeFields(['id', 'image', 'ten', 'giasp', 'tomtat']);
     }
 
     public function fetchLoaiDanThuongHieu() {

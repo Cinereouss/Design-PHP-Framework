@@ -7,11 +7,15 @@
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="/Cart">Giỏ hàng</a>
+                <a href="javascript:history.back()">Chi tiết sản phẩm</a>
                 <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
             </li>
             <li>
-                <a href="/Order">Đặt hàng</a>
+                <a href="#">Đặt hàng</a>
+                <ion-icon class="chevron-forward" name="chevron-forward"></ion-icon>
+            </li>
+            <li>
+                <a href="/Product/showDetail/<?php echo $data['DBData'][0]->id ?>"><?php echo $data['DBData'][0]->ten ?></a>
             </li>
         </ul>
     </div>
@@ -20,7 +24,9 @@
 
 <!-- Order Detail -->
 <div class="container">
-    <form class="form-order-detal" action="/Order/executeOrder" method="POST">
+    <?php
+    echo '<form class="form-order-detal" action="/Order/executeOneProductOrder/'.$data['DBData'][0]->id.'" method="POST">';
+    ?>
         <div class="row">
 
             <div class="left-form col-12 col-lg-6 col-md-6 col-sm-12">
@@ -61,44 +67,21 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    <?php
-                    if (isset($_SESSION['cart'])) {
-                        foreach ($_SESSION['cart'] as $idProduct => $detail) {
-                            echo '<tr>';
-                            echo '<td>'.$detail['ten'].' <span class="product-quantity"><strong> x '.$detail['soluong'].' sản phẩm </strong></span></td>';
-                            echo '<td><span class="home-price">'.$detail['giasp'].'</span> VNĐ</td>';
-                            echo '</tr>';
-                        }
-                    } else {
-                        echo '';
-                    }
-                    ?>
-
+                    <tr>
+                        <?php
+                            echo '<td>'.$data['DBData'][0]->ten.' <span class="product-quantity"><strong> x 1 sản phẩm</strong></span></td>';
+                            echo '<td><span class="home-price">'.$data['DBData'][0]->giasp.'</span> VNĐ</td>';
+                        ?>
+                    </tr>
                     <tr>
                         <th scope="col">TỔNG ĐƠN HÀNG</th>
-
                         <?php
-                        $totalPrice = 0;
-                        if(!empty($_SESSION['cart'])){
-                            foreach ($_SESSION['cart'] as $idProduct => $details) {
-                                $totalPrice += $details['thanhtien'];
-                            }
-                        }
-                        echo '<th scope="col"><span class="home-price">'.$totalPrice.'</span> VNĐ</th>';
+                            echo '<th scope="col"><span class="home-price">'.$data['DBData'][0]->giasp.'</span> VNĐ</th>';
                         ?>
-
                     </tr>
                     </tbody>
                 </table>
-
-                <?php
-                if (!empty($_SESSION['cart'])) {
-                    echo '<button type="submit" class="btn btn-secondary mb-2" name="datHang">ĐẶT HÀNG</button>';
-                } else {
-                    echo '<button type="submit" class="btn btn-secondary mb-2" name="datHang" disabled>ĐẶT HÀNG</button>';
-                }
-                ?>
+                <button type="submit" class="btn btn-secondary mb-2" name="datHang">ĐẶT HÀNG</button>
             </div>
 
         </div>

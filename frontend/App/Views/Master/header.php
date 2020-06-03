@@ -16,32 +16,60 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Thương hiệu
+                            Thương hiệu đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Đàn guitar Taylor</a>
-                            <a class="dropdown-item" href="#">Đàn guitar Sigma</a>
-                            <a class="dropdown-item" href="#">Đàn guitar Fender</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Thương hiệu khác</a>
+                            <?php
+                            foreach ($arrThuongHieu as $record){
+                                echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/0-'.$record->id.'-ALLPRICE-1">Guitar '.$record->ten.'</a>';
+                            }
+                            ?>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Phụ kiện
+                            Loại đàn
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Phím đàn guitar</a>
-                            <a class="dropdown-item" href="#">Capo đàn guitar</a>
-                            <a class="dropdown-item" href="#">Dây đeo đàn guitar</a>
+
+                            <?php
+                            foreach ($arrLoaiDan as $record){
+                                echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$record->id.'-0-ALLPRICE-1">Guitar '.$record->ten.'</a>';
+                            }
+                            ?>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Giỏ hàng <span class="num-in-cart"><?php
+                                if(isset($_SESSION['cart'])){
+                                    echo count($_SESSION['cart']);
+                                } else {
+                                    echo '0';
+                                }
+                                ?></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <?php
+                            if (!empty($_SESSION['cart'])) {
+                                foreach ($_SESSION['cart'] as $idProduct => $detail) {
+                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'"><img src="/Public/image/'.$detail['image'].'" alt="img-in-cart" height="70px" width=auto> | '.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
+                                }
+                            } else {
+                                echo '<a class="dropdown-item" href="/Cart/index">Giỏ hàng trống</a>';
+                            }
+                            ?>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Thương hiệu khác</a>
+                            <a class="dropdown-item" href="/Cart/index" style="text-align: center">Xem chi tiết giỏ hàng</a>
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <form class="form-inline my-2 my-lg-0" action="/Search/searchProducts/1" method="POST" onsubmit="return validateSearchForm()" name="searchForm">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search" name="searchKeyword">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" name="btn-search-product">Tìm kiếm</button>
                 </form>
             </div>
         </div>
