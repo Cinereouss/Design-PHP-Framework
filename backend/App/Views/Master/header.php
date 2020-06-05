@@ -133,7 +133,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="extra_lock.html">
+                            <a href="ChangePass">
                                 <i class="icon-lock"></i> Changes Passeword </a>
                         </li>
                         <li>

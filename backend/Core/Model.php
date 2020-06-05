@@ -58,6 +58,10 @@ class Model
         return $this;
     }
 
+    public function getLastId(){
+        return mysqli_insert_id($this->connection);
+    }
+
     // $db->table('tableName')->insert(param: ['key'=>'value'])
     public function insert($data = [])
     {

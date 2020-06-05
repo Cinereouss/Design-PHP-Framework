@@ -17,8 +17,8 @@
                     <span id="quanlyhethong-span"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="Order">
+                    <li id="khohang">
+                        <a href="Warehouse">
                             <i class="icon-wallet"></i>
                             Kiểm kê kho hàng</a>
                     </li>
@@ -114,19 +114,20 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li id="quanlyuser-li">
                 <a href="javascript:;">
                     <i class="icon-user"></i>
                     <span class="title">Quản lý user</span>
                     <span class="arrow "></span>
+                    <span id="quanlyuser-span"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="login.html">
+                    <li id="doimatkhau">
+                        <a href="ChangePass">
                             Đổi mật khẩu</a>
                     </li>
-                    <li>
-                        <a href="login_2.html">
+                    <li id="taotaikhoan">
+                        <a href="CreateUser">
                             Tạo tài khoản</a>
                     </li>
                     <li>

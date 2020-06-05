@@ -62,7 +62,6 @@ if (isset($_SESSION['username'])) {
                     url: 'User/userLogin',
                     data: data,
                     success: function (data) {
-                        console.log(data);
                         if (data === 'true') {
                             location.reload();
                         } else {
