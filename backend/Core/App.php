@@ -2,49 +2,46 @@
 
 class App
 {
-    private $controller = 'LoginController';
+    private $controller = 'UserController';
     private $action = 'index';
     private $params = [];
 
     public function __construct()
     {
         $url = $this->procUrl();
-
-        //Router Controller
         unset($url[0]);
-        unset($url[1]);
-        if(count($url) > 0 && $url[2] == 'Login'){
-            if (count($url) > 0 && file_exists("./App/Controllers/" . $url[2] . "Controller.php")) {
-                $this->controller = $url[2] . "Controller";
-                unset($url[2]);
+        //Router Controller
+        if(isset($url[1]) > 0 && $url[1] == 'User'){
+            if (count($url) > 0 && file_exists("./App/Controllers/" . $url[1] . "Controller.php")) {
+                $this->controller = $url[1] . "Controller";
             }
+            unset($url[1]);
             require_once("./App/Controllers/" . $this->controller . ".php");
             $this->controller = new $this->controller;
             //Router Action
-            if (isset($url[3])) {
-                if (method_exists($this->controller, $url[3])) {
-                    $this->action = $url[3];
+            if (isset($url[2])) {
+                if (method_exists($this->controller, $url[2])) {
+                    $this->action = $url[2];
                 }
-                unset($url[3]);
+                unset($url[2]);
             }
-
             //Process Param
             $this->params = $url ? array_values($url) : [];
             //Call Action
             call_user_func_array([$this->controller, $this->action], $this->params);
         }elseif (isset($_SESSION['username'])) {
-            if (count($url) > 0 && file_exists("./App/Controllers/" . $url[2] . "Controller.php")) {
-                $this->controller = $url[2] . "Controller";
-                unset($url[2]);
+            if (isset($url) > 0 && file_exists("./App/Controllers/" . $url[1] . "Controller.php")) {
+                $this->controller = $url[1] . "Controller";
+                unset($url[1]);
             }
             require_once("./App/Controllers/" . $this->controller . ".php");
             $this->controller = new $this->controller;
             //Router Action
-            if (isset($url[3])) {
-                if (method_exists($this->controller, $url[3])) {
-                    $this->action = $url[3];
+            if (isset($url[2])) {
+                if (method_exists($this->controller, $url[2])) {
+                    $this->action = $url[2];
                 }
-                unset($url[3]);
+                unset($url[2]);
             }
 
             //Process Param

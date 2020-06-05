@@ -22,7 +22,6 @@
     <div class="clearfix"></div>
     <!-- /#sidebar-wrapper -->
     <div id="page-content-wrapper">
-        <?php require_once('sidebar.php') ?>
         <?php require_once ($data['Content'].'.php')?>
     </div>
 </div>

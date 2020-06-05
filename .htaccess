@@ -11,7 +11,7 @@ RewriteCond %{REQUEST_URI} ^/admin/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin\/?(.*) /backend/$1
 
-RewriteCond %{REQUEST_URI} !^/(frontend|admin)
+RewriteCond %{REQUEST_URI} !^/(backend|admin)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) /frontend/$1
 
