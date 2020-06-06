@@ -6,7 +6,8 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="Home">
-                                <img src="#" alt="logo" class="logo-default"/>
+                <ion-icon class="logo-image-btl" name="musical-notes-outline"></ion-icon>
+                <a class="navbar-brand" href="/Home">Guitar-H2D</a>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
             </div>

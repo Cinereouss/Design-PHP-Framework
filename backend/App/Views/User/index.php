@@ -38,10 +38,10 @@ if (isset($_SESSION['username'])) {
 <!-- scripts -->
 <script src="/backend/App/Views/User/particles.js"></script>
 <script src="/backend/App/Views/User/js/app.js"></script>
-<script src="./public/js/jquery.min.js"></script>
+<script src="/backend/Public/js/jquery.min.js"></script>
 <script src="/backend/App/Views/User/js/sweetalert2.all.min.js"></script>
-<script src="./public/js/bootstrap.bundle.min.js"></script>
-<script src="./public/js/javascript.js"></script>
+<script src="/backend/Public/js/bootstrap.bundle.min.js"></script>
+<script src="/backend/Public/js/javascript.js"></script>
 <!-- stats.js -->
 <script src="/backend/App/Views/User/js/lib/stats.js"></script>
 

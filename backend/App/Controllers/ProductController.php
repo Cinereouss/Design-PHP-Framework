@@ -71,7 +71,7 @@ class ProductController extends Controller
                         if ($uploadOk != 0) {
                             if (move_uploaded_file($_FILES["img-" . $index]["tmp_name"], $target_file)) {
                                 $this->model->upImg($result, $time . $_FILES["img-" . $index]["name"]);
-                                if ($index == 1) {
+                                if ($index+1 == 1) {
                                     $this->model->updateImgAvt($result, $time . $_FILES["img-" . $index]["name"]);
                                 }
                             }

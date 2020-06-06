@@ -32,46 +32,13 @@
                             <i class="icon-bar-chart"></i>
                             Kiểm kê doanh thu</a>
                     </li>
-                    <li>
-                        <a href="index.html">
-                            <i class="icon-pencil"></i>
-                            Chi tiết hàng hóa</a>
-                    </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:;">
                     <i class="icon-basket"></i>
                     <span class="title">Đơn hàng</span>
-                    <span class="arrow "></span>
                 </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="ecommerce_index.html">
-                            <i class="icon-home"></i>
-                            Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_orders.html">
-                            <i class="icon-basket"></i>
-                            Orders</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_orders_view.html">
-                            <i class="icon-tag"></i>
-                            Order View</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_products.html">
-                            <i class="icon-handbag"></i>
-                            Products</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_products_edit.html">
-                            <i class="icon-pencil"></i>
-                            Product Edit</a>
-                    </li>
-                </ul>
             </li>
 
             <li>
@@ -82,35 +49,21 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="icon-puzzle"></i>
+                    <i class="icon-puzzle" id = 'cauhinh-li'></i>
                     <span class="title">Cấu hình website</span>
                     <span class="arrow "></span>
+                    <span id="cauhinh-span"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="ecommerce_index.html">
+                    <li id="slides">
+                        <a href="Slides">
                             <i class="icon-home"></i>
-                            Dashboard</a>
+                        Quản lý banner</a>
                     </li>
-                    <li>
-                        <a href="ecommerce_orders.html">
+                    <li id="contact">
+                        <a href="Contact">
                             <i class="icon-basket"></i>
-                            Orders</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_orders_view.html">
-                            <i class="icon-tag"></i>
-                            Order View</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_products.html">
-                            <i class="icon-handbag"></i>
-                            Products</a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_products_edit.html">
-                            <i class="icon-pencil"></i>
-                            Product Edit</a>
+                            Thông tin liên hệ</a>
                     </li>
                 </ul>
             </li>

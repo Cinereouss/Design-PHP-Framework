@@ -1,4 +1,7 @@
 <!-- Carousel -->
+<?php
+    $rootFile = explode('\frontend\App\Views\Home', dirname(__FILE__))[0];
+?>
 <section class="section-carousel">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -17,11 +20,11 @@
             foreach ($data['Slides'] as $index => $slide) {
                 if($index == 0) {
                     echo '<div class="carousel-item active">
-                    <img class="d-block w-100" src="/Public/image/'.$slide->img.'" alt="'.$slide->alt.'">
+                    <img class="d-block w-100" src="/Common/imgSlide/'.$slide->img.'" alt="'.$slide->alt.'">
                 </div>';
                 } else {
                     echo '<div class="carousel-item">
-                    <img class="d-block w-100" src="/Public/image/'.$slide->img.'" alt="'.$slide->alt.'">
+                    <img class="d-block w-100" src="/Common/imgSlide/'.$slide->img.'">
                 </div>';
                 }
             }

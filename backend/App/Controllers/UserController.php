@@ -13,8 +13,7 @@ class UserController extends Controller
     {
         $this->view('User');
     }
-
-
+    
 
     public function userLogin()
     {

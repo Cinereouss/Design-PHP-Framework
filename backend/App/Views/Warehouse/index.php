@@ -61,6 +61,7 @@
 
     $(document).ready(function () {
         $('#nhaphang').on('click', function () {
+            console.log('ok');
             var id_product = $(this).val();
             Swal.fire({
                 title: "Nhập hàng!",
@@ -76,7 +77,7 @@
                         data: {
                             id : id_product,
                             soluong : result.value
-                        }
+                        },
                         success : function () {
                             if ('true' === 'true') {
                                 Swal.fire({
