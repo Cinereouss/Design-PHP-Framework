@@ -10,19 +10,22 @@ class App
         $url = $this->procUrl();
         //Router Controller
         unset($url[0]);
+        unset($url[1]);
 
-        if(isset($url) && file_exists("./App/Controllers/".$url[1]."Controller.php")){
-            $this->controller = $url[1]."Controller";
-            unset($url[1]);
+        if(isset($url[2])) {
+            if (isset($url) && file_exists("./App/Controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = $url[2] . "Controller";
+                unset($url[2]);
+            }
         }
         require_once ("./App/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;
         //Router Action
-        if(isset($url[2])){
-            if(method_exists($this->controller, $url[2])){
-                $this->action = $url[2];
+        if(isset($url[3])){
+            if(method_exists($this->controller, $url[3])){
+                $this->action = $url[3];
             }
-            unset($url[2]);
+            unset($url[3]);
         }
 
         //Process Param

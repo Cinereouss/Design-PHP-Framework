@@ -80,7 +80,7 @@
                                     $tenThuongHieu = 'Đàn '.$row->tenThuongHieu.'-'.$record->ten;
                                     $secretSearchParam = $record->id.'-'.$row->idThuongHieu.'-ALLPRICE-1';
 
-                                    echo '<a class="dropdown-item" href="/Search/searchLoaiDanThuongHieu/'.$secretSearchParam.'">'.$tenThuongHieu.'</a>';
+                                    echo '<a class="dropdown-item" href="/Search/searchLoaiDanVaThuongHieu/'.$secretSearchParam.'">'.$tenThuongHieu.'</a>';
                                 }
                             }
                             ?>
