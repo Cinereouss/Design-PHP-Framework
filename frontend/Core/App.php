@@ -10,16 +10,13 @@ class App
         $url = $this->procUrl();
         //Router Controller
         unset($url[0]);
+        unset($url[1]);
 
-        foreach ($url as $index => $value){
-            if($index > 4) {
-                unset($url[$index]);
+        if(isset($url[2])) {
+            if (isset($url) && file_exists("./App/Controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = $url[2] . "Controller";
+                unset($url[2]);
             }
-        }
-
-        if(isset($url) && file_exists("./App/Controllers/".$url[2]."Controller.php")){
-            $this->controller = $url[2]."Controller";
-            unset($url[2]);
         }
         require_once ("./App/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;

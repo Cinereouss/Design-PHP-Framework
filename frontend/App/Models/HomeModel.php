@@ -26,7 +26,7 @@ class HomeModel extends Model {
 
         $start = ($page - 1) * $limit;
 
-        return $this->db->table('sanpham')->limit($limit)->offset($start)->findAllFilteredProducts($thuonghieu_id, $loaidan_id, $sortType);
+        return $this->db->table('sanpham')->limit($limit)->offset($start)->findAllFilteredProductsForSort($thuonghieu_id, $loaidan_id, $sortType);
     }
 
     public function countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) {
@@ -38,7 +38,7 @@ class HomeModel extends Model {
             $loaidan_id = '%';
         }
 
-        return count($this->db->table('sanpham')->findAllFilteredProducts($thuonghieu_id, $loaidan_id, $sortType));
+        return count($this->db->table('sanpham')->findAllFilteredProductsForSort($thuonghieu_id, $loaidan_id, $sortType));
     }
 
     public function countTotalRecord() {

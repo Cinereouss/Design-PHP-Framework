@@ -258,6 +258,51 @@ class Model
         return $returnData;
     }
 
+    public function findAllFilteredProductsforAnd($thuonghieu_id, $loaidan_id, $order)
+    {
+        if($order != 'ALLPRICE') {
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id = ? AND loaidan_id = ? ORDER BY giasp $order LIMIT ? OFFSET ?";
+        } else {
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id = ? AND loaidan_id = ? LIMIT ? OFFSET ?";
+        }
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('iiii',$thuonghieu_id, $loaidan_id, $this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
+    public function findAllFilteredProductsForSort($thuonghieu_id_int, $loaidan_id_int, $order)
+    {
+        $thuonghieu_id = strval($thuonghieu_id_int);
+        $loaidan_id = strval($loaidan_id_int);
+
+        if($order != 'ALLPRICE') {
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE ? AND loaidan_id LIKE ? ORDER BY giasp $order LIMIT ? OFFSET ?";
+        } else {
+            $sql = "SELECT * FROM $this->table WHERE thuonghieu_id LIKE ? AND loaidan_id LIKE ? LIMIT ? OFFSET ?";
+        }
+
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('ssii',$thuonghieu_id, $loaidan_id, $this->limit, $this->offset);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
+
 }
 
 ?>
