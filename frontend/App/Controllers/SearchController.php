@@ -117,8 +117,8 @@ class SearchController extends Controller
             $this->view('Master', [
                 'Content' => 'Search',
                 'DBData' => $this->model->fetchAllFilteredProductPerPageForAnd($thuonghieu_id, $loaidan_id, $sortType, $page, $this->pageLimit),
-                'TotalPage' => ceil($this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType) / $this->pageLimit),
-                'TotalResult' => $this->model->countTotalFilteredProduct($thuonghieu_id, $loaidan_id, $sortType),
+                'TotalPage' => ceil($this->model->countTotalFilteredProductForAnd($thuonghieu_id, $loaidan_id, $sortType) / $this->pageLimit),
+                'TotalResult' => $this->model->countTotalFilteredProductForAnd($thuonghieu_id, $loaidan_id, $sortType),
                 'CurrentPage' => $page,
                 'Title' => 'Thông tin sản phẩm',
                 '$thuonghieu_id' => $thuonghieu_id,

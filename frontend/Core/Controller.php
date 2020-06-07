@@ -11,6 +11,7 @@ class Controller
         $globalDataObj = $this->model('Global');
         $arrThuongHieu = $globalDataObj->fetchAllThuongHieu();
         $arrLoaiDan = $globalDataObj->fetchAllLoaiDan();
+        $data['Contact'] = $globalDataObj->getContact();
 
         require_once ("./App/Views/".$view."/index.php");
     }

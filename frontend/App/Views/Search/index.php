@@ -160,7 +160,7 @@
                 ?>
                 <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                     <div class="card text-center" style="width: 18rem;">
-                        <img src="/Public/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
+                        <img src="/Common/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
                         <div class="card-body">
                             <h5 class="card-title"><?= $record->ten ?></h5>
                             <p class="card-title" style="color: red;">Giá: <span class="home-price"><?= $record->giasp ?></span> VNĐ</p>

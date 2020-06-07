@@ -60,4 +60,16 @@ class SearchModel extends Model {
 
         return $this->db->table('sanpham')->limit($limit)->offset($start)->findAllFilteredProductsforAnd($thuonghieu_id, $loaidan_id, $sortType);
     }
+
+    public function countTotalFilteredProductForAnd($thuonghieu_id, $loaidan_id, $sortType) {
+        if($thuonghieu_id == 0) {
+            $thuonghieu_id = '%';
+        }
+
+        if($loaidan_id == 0) {
+            $loaidan_id = '%';
+        }
+
+        return count($this->db->table('sanpham')->findAllFilteredProductsforAnd($thuonghieu_id, $loaidan_id, $sortType));
+    }
 }

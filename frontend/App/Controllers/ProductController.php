@@ -24,6 +24,7 @@ class ProductController extends Controller {
                 'Content' => 'Product',
                 'DBData' => $this->model->fetchProductDetail($idProduct),
                 'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
+                'AnhSanPham' => $this->model->fetchAnhSanPham($idProduct),
                 'Title' => 'Chi tiết sản phẩm'
             ]);
         }

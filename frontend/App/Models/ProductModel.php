@@ -14,4 +14,8 @@ class ProductModel extends Model {
     public function fetchLoaiDanThuongHieu() {
         return $this->db->findLoaiDanThuongHieu();
     }
+
+    public function fetchAnhSanPham($idSanPham) {
+        return $this->db->table('anhsp')->findWhere(['sanpham_id'=>$idSanPham]);
+    }
 }

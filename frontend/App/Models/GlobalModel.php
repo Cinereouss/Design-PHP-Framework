@@ -15,4 +15,7 @@ class GlobalModel extends Model {
         return $this->db->table('loaidan')->findAll();
     }
 
+    public function getContact(){
+        return $this->db->table('contact')->findAll()[0];
+    }
 }

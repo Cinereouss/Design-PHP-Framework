@@ -85,14 +85,18 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="/public/image/<?= $data['DBData'][0]->image ?>" class="d-block w-100" alt="...">
+                                <img src="/Common/image/<?= $data['DBData'][0]->image ?>" class="d-block w-100" alt="...">
                             </div>
-                            <div class="carousel-item">
-                                <img src="/public/image/product-detail-4.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/public/image/product-detail-3.jpg" class="d-block w-100" alt="...">
-                            </div>
+                            <?php
+                            foreach ($data['AnhSanPham'] as $anhSP):
+                            ?>
+                                <div class="carousel-item">
+                                    <img src="/Common/image/<?= $anhSP->link ?>" class="d-block w-100" alt="...">
+                                </div>
+                            <?php
+                            endforeach;
+                            ?>
+
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -136,7 +140,7 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="/public/image/<?= $data['DBData'][0]->image ?>" class="d-block w-100" alt="...">
+                                            <img src="/Common/image/<?= $data['DBData'][0]->image ?>" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="/public/image/product-detail-4.jpg" class="d-block w-100" alt="...">
