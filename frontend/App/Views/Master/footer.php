@@ -11,8 +11,8 @@
             <div class="letter-left col-12 col-lg-6 col-md-6 col-sm-12">
                 <h2>LIÊN HỆ</h2>
                 <p>Chúng tôi sẽ giúp bạn tìm đúng giải pháp cho đam mê của bạn.</p>
-                <a href="mailto:duongdd@gmail.com" class="btn btn-secondary btn-lg">GỬI EMAIL</a>
-                <a href="tel:0369855860" class="btn btn-secondary btn-lg">HOTLINE</a>
+                <a href="mailto: <?= $data['Contact']->email ?>" class="btn btn-secondary btn-lg">GỬI EMAIL</a>
+                <a href="tel: <?= $data['Contact']->phone ?>" class="btn btn-secondary btn-lg">HOTLINE</a>
             </div>
             <div class="letter-right col-12 col-lg-6 col-md-6 col-sm-12">
                 <h2>ĐĂNG KÝ NHẬN EMAIL CẬP NHẬT</h2>
@@ -45,7 +45,7 @@
             <div class="col-12 col-lg-6 col-md-6 col-sm-12">
                 <ul class="social-links">
                     <li>
-                        <a href="#"
+                        <a href="<?= $data['Contact']->facebook ?>"
                         ><ion-icon name="logo-facebook" class="logo-facebook"></ion-icon
                             ></a>
                     </li>
@@ -75,10 +75,10 @@
     <div class="container">
         <div class="footer-infor">
             <p>
-                Copyright &copy; 2020 by Du Dinh Duong & La Dac Hieu & Le Duc Huy. All rights reserved.
+                <?= $data['Contact']->diachi ?>
             </p>
             <p>
-                www.guitarh2d.com.vn
+                <?= $data['Contact']->website ?> |  <?= $data['Contact']->phone ?>
             </p>
         </div>
     </div>

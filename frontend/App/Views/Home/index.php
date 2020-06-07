@@ -167,7 +167,7 @@
             ?>
             <div class="product-btl col-6 col-lg-4 col-md-4 col-sm-6">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="/Public/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
+                    <img src="/Common/image/<?= $record->image ?>" class="card-img-top" alt="product-1">
                     <div class="card-body">
                         <h5 class="card-title"><?= $record->ten ?></h5>
                         <p class="card-title" style="color: red;">Giá: <span class="home-price"><?= $record->giasp ?></span> VNĐ</p>
@@ -253,22 +253,7 @@
 <section class="section-guitar-infor-btl">
     <div class="infor-container">
         <div class="container infor">
-            <h2><strong>HÃNG GUITAR TỐT NHẤT</strong></h2>
-            <p>Thật khó để nói rằng cây đàn ghi ta nào tốt nhất… vì nó phụ thuộc vào nhiều thứ: loại dòng nhạc bạn đang
-                chơi là nhạc dân gian hay hiện đại, bạn thích giai điệu du dương hay khúc chiết…Nếu như bạn đang có ý
-                định tìm kiếm một cây đàn guitar tốt để có âm thanh phát ra sắc bén và đặc sắc nhất thì chúng tôi khuyên
-                bạn nên mua đàn guitar tại các cửa hàng đã được chính thức ủy quyền bán hàng nhập khẩu chính hãng.</p>
-            <h2><strong>LƯU Ý KHI CHỌN MUA</strong></h2>
-            <p>Khi các bạn đến những cửa hàng bán, địa điểm bán đàn guitar thì đừng vì ham rẻ mà bạn mua phải những sản
-                phẩm kém chất lượng, bạn cần kiểm tra kỹ lưỡng và nếu như thấy bất cứ một bộ phận nào bị lỏng lẻo, không
-                chắc chắn, âm thanh chênh phô khi bạn đã điều chỉnh dây đàn nhiều lần thì dù giá đàn rẻ đến mức nào bạn
-                cũng nên từ bỏ ngay ý định mua cây đàn guitar.</p>
-            <p>Để mua được cây đàn guitar đảm bảo chất lượng cao thì bạn nên dùng thử trước khi mua, hãy nghe thử âm
-                thanh của cây guitar phát ra xem có tạp âm hay không? Nếu như bạn cảm thấy tiếng đàn không kèm theo tạp
-                âm thì đó có thế là một cây đàn chất lượng và ngược lại.</p>
-            <p>Một cách chuyên nghiệp hơn là bạn hãy thử tất cả các loại đàn với các thương hiệu khác nhau, và với các
-                mức giá khác nhau, bạn hãy thử cả những cây đàn guitar đắt tiền và rẻ tiền, sau đó so sánh tiếng đàn
-                phát ra, để biết được cây đàn guitar mà bạn định mua có chất lượng không?</p>
+            <?= $data['Contact']->infor ?>
         </div>
     </div>
 </section>

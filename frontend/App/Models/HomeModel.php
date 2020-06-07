@@ -53,4 +53,8 @@ class HomeModel extends Model {
     public function fetchLoaiDanThuongHieu() {
         return $this->db->findLoaiDanThuongHieu();
     }
+
+    public function getContact(){
+        return $this->db->table('contact')->findAll()[0];
+    }
 }

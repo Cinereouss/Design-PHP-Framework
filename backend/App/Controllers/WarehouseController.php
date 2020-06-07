@@ -20,6 +20,8 @@ class WarehouseController extends Controller
     }
 
     public function nhaphang (){
-        var_dump($_POST);
+        if($_POST){
+            echo $this->model->nhaphang($_POST['id'], $_POST['soluong']) > 0 ?  'true' : 'false';
+        }
     }
 }

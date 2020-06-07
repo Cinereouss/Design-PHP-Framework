@@ -18,4 +18,10 @@ class ContactController extends Controller
             'data' => $this->model->getContact()
         ]);
     }
+    public function update()
+    {
+       if(isset($_POST)){
+           echo $this->model->updateInfor($_POST['Website'], $_POST['Facebook'], $_POST['Email'], $_POST['Copyright'], $_POST['Phone'], $_POST['Content']) > 0 ?  'true' : 'false';
+       }
+    }
 }

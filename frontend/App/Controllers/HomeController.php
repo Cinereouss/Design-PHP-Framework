@@ -19,7 +19,8 @@ class HomeController extends Controller {
             'CurrentPage' => 1,
             'PaginationType' => 'page',
             'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
-            'Title'=>'Trang chủ Guitar H2D'
+            'Title'=>'Trang chủ Guitar H2D',
+            'Contact'=> $this->model->getContact(),
         ]);
     }
 
@@ -33,7 +34,8 @@ class HomeController extends Controller {
                 'CurrentPage' => $page,
                 'PaginationType' => 'page',
                 'ThuongHieuLoai' => $this->model->fetchLoaiDanThuongHieu(),
-                'Title' => 'Trang chủ Guitar H2D'
+                'Title' => 'Trang chủ Guitar H2D',
+                'Contact'=> $this->model->getContact(),
             ]);
         } else {
             $this->renderErrorPage();
@@ -58,7 +60,8 @@ class HomeController extends Controller {
                     'Title' => 'Trang chủ Guitar H2D',
                     '$thuonghieu_id' => $thuonghieu_id,
                     '$loaidan_id' => $loaidan_id,
-                    '$sortType' => $sortType
+                    '$sortType' => $sortType,
+                    'Contact'=> $this->model->getContact(),
                 ]);
             }
         } else {
@@ -91,7 +94,8 @@ class HomeController extends Controller {
                 'Title' => 'Trang chủ Guitar H2D',
                 '$thuonghieu_id' => $thuonghieu_id,
                 '$loaidan_id' => $loaidan_id,
-                '$sortType' => $sortType
+                '$sortType' => $sortType,
+                'Contact'=> $this->model->getContact(),
             ]);
         } else {
             $this->renderErrorPage();

@@ -40,8 +40,8 @@
                                 <th><?= $item->thuonghieu_id ?></th>
                                 <th><?= $item->loaidan_id ?></th>
                                 <th> <?= $item->status ?></th>
-                                <th><?= $item->hienthi ? "<button class='btn btn-default btn-xs green' value='" . $item->id . "'><i
-                                                    class='fa fa-check' > YES</i></button>" : "<button class='btn btn-default btn-xs red' value='" . $item->id . "'><i
+                                <th><?= $item->hienthi ? "<button id = 'yes' class='btn-hienthi btn btn-default btn-xs green' value='" . $item->id . "'><i
+                                                    class='fa fa-check' > YES</i></button>" : "<button id = 'no' class=' btn-hienthi btn btn-default btn-xs red' value='" . $item->id . "'><i
                                                     class='fa fa-xing'> NO</i></button>" ?></th>
                                 <th>
                                     <button class="btn btn-default btn-xs purple" style="color: white!important;"
@@ -202,6 +202,30 @@
                 $(this).siblings('.btn-uploadFiles').addClass('hidden');
                 $(this).siblings('.btn-cencalFiles').removeClass('hidden');
             }
+        })
+
+        $('.btn-hienthi').on('click', function () {
+            console.log('ok');
+            var idd = $(this).val();
+            $.ajax({
+                url: 'Product/hienthi',
+                data: {
+                    id: idd,
+                    action : $(this).attr('id')
+                },
+                type: 'post',
+                success: function (data) {
+                    if (data === 'true') {
+                        location.reload()
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Thất bại, vui lòng liên hệ quản trị viên',
+                        });
+                    }
+                }
+            })
         })
 
         $('#form-Product').ajaxForm({

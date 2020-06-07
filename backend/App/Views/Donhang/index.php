@@ -13,30 +13,24 @@
                         <thead style="background-image: linear-gradient(to right, #121427, #4a144f) ; color: white">
                         <tr style="text-align: center; vertical-align: middle">
                             <td style="width: 3%">#</td>
-                            <td style="width: 10%">Hình ảnh</td>
-                            <td style="width: 7%">Mã hàng</td>
-                            <td style="width: 20%">Tên sản phẩm</td>
-                            <td style="width: 10%">Giá</td>
-                            <td style="width: 10%">Số lượng trong kho</td>
-                            <td style="width: 15%">Status</td>
+                            <td style="width: 10%">Ngày đặt</td>
+                            <td style="width: 7%">Ghi chú</td>
+                            <td style="width: 20%">Tình trạng</td>
+                            <td style="width: 10%">Tổng tiền</td>
                             <td style="width: 15%">Action</td>
                         </tr>
                         </thead>
                         <tbody>
                         <?php foreach ($data['data'] as $value => $item) : ?>
-                            <tr style="text-align: center;">
+                            <tr style="text-align: center; <?php if($item->tinhtrang === "Đã gửi") echo "background-color : #85ec85"; else echo "background-color : #ef5a5a";?>">
                                 <td style="vertical-align: middle">#</td>
-                                <td style="vertical-align: middle"><img src="/Common/image/<?= $item->image ?>"
-                                                                        style="width: 80px; height: 80px"></td>
-                                <td style="vertical-align: middle"><?= $item->masp ?></td>
-                                <td style="vertical-align: middle"><?= $item->ten ?></td>
-                                <td style="vertical-align: middle"><?= func::formatMoney($item->giasp) . ' vnd' ?></td>
-                                <td style="vertical-align: middle"><?= $item->soluong ?></td>
-                                <td style="vertical-align: middle"> <?= $item->status ?></td>
+                                <td style="vertical-align: middle"><?= $item->ngay ?></td>
+                                <td style="vertical-align: middle"><?= $item->ghichu ?></td>
+                                <td style="vertical-align: middle"><?= $item->tinhtrang ?></td>
+                                <td style="vertical-align: middle"><?= func::formatMoney($item->tongtien) . ' vnd' ?></td>
                                 <td style="vertical-align: middle">
-                                    <button class="btn btn-default btn-xs purple nhaphang" style="color: white!important;"
-                                            value="<?= $item->id ?>" ><i class="fa fa-download"> Nhập
-                                            hàng</i></button>
+                                    <button class="btn btn-default btn-xs purple nhaphang <?php if($item->tinhtrang === "Đã gửi") echo "hidden";?>" style="color: white!important;"
+                                            value="<?= $item->id ?>" ><i class="fa fa-download"> Xử lý đơn hàng</i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -55,9 +49,8 @@
 </style>
 <script src="/backend/App/Views/User/js/sweetalert2.all.min.js"></script>
 <script>
-    $('#quanlyhethong-li').addClass("active");
-    $('#quanlyhethong-span').addClass("selected");
-    $('#khohang').addClass("active");
+    $('#donhang-li').addClass("active");
+    $('#donhang-span').addClass("selected");
 
     $(document).ready(function () {
         $('.nhaphang').on('click', function () {

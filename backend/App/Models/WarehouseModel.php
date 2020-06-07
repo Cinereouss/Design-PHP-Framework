@@ -23,4 +23,13 @@ class WarehouseModel
             }
             return $result;
     }
+
+    public function nhaphang($id, $soluong){
+        $sum = $this->db->table('sanpham')->findWhere([
+            'id'=>$id
+        ])[0]->soluong + $soluong;
+        return $this->db->table('sanpham')->updateById($id, [
+            'soluong'=>$sum
+        ]);
+    }
 }

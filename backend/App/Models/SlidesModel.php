@@ -15,4 +15,24 @@ class SlidesModel extends Model
         $result = $this->db->table('slide')->findAll();
         return $result;
     }
+
+    public function hienthiSlide($id, $gt)
+    {
+        return $this->db->table('slide')->updateById($id, [
+            'active' => $gt,
+        ]);
+    }
+
+    public function deleteSlide($id)
+    {
+        return $this->db->table('slide')->deleteById($id);
+    }
+
+    public function createSlides($mota, $hienthi, $name){
+        return $this->db->table('slide')->insert([
+            'alt'=>$mota,
+            'active' => $hienthi,
+            'img' => $name
+        ]);
+    }
 }

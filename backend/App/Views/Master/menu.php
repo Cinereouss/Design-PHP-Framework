@@ -34,10 +34,11 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;">
+            <li id = 'donhang-li'>
+                <a href="Donhang">
                     <i class="icon-basket"></i>
                     <span class="title">Đơn hàng</span>
+                    <span id="donhang-span"></span>
                 </a>
             </li>
 
@@ -47,9 +48,9 @@
                     <span class="title">Khách hàng & CSKH</span>
                 </a>
             </li>
-            <li>
+            <li id = 'cauhinh-li'>
                 <a href="javascript:;">
-                    <i class="icon-puzzle" id = 'cauhinh-li'></i>
+                    <i class="icon-puzzle" ></i>
                     <span class="title">Cấu hình website</span>
                     <span class="arrow "></span>
                     <span id="cauhinh-span"></span>

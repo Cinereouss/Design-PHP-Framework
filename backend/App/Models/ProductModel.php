@@ -46,6 +46,13 @@ class ProductModel extends Model
         ]);
     }
 
+    public function hienthiProduct($id, $gt)
+    {
+        return $this->db->table('sanpham')->updateById($id, [
+            'hienthi' => $gt,
+        ]);
+    }
+
     public function deleteProduct($id)
     {
         $imgs = $this->db->table('anhsp')->findWhere([
