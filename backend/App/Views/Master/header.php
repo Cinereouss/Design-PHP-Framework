@@ -7,7 +7,7 @@
         <div class="page-logo">
             <a href="Home">
                 <ion-icon class="logo-image-btl" name="musical-notes-outline"></ion-icon>
-                <a class="navbar-brand" href="/Home">Guitar-H2D</a>
+                <a class="navbar-brand" href="/admin/">Guitar-H2D</a>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
             </div>
@@ -32,7 +32,7 @@
                             <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
                                 <?php foreach ($data['Donhang'] as $donhang) : ?>
                                 <li>
-                                    <a href="Xulydonhang/viewInfor/<?= $donhang->id ?>">
+                                    <a href="Xulydonhang/viewInfor/<?= $donhang->id ?>" target="_blank">
                                         <span class="time"><?= explode(" ", $donhang->ngay )[0] ?></span>
                                         <span class="details">
 									<span class="label label-sm label-icon label-warning">

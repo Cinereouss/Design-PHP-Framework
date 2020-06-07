@@ -151,6 +151,20 @@ class Model
         return $this->statement->affected_rows;
     }
 
+    public function getInfo($id){
+        $sql = "SELECT * FROM sanpham INNER JOIN chitietdonhang on chitietdonhang.sanpham_id = sanpham.id WHERE donhang_id = ?";
+        $this->statement = $this->connection->prepare($sql);
+        $this->statement->bind_param('i',$id);
+        $this->statement->execute();
+        $this->resetQuery();
+
+        $result = $this->statement->get_result();
+        $returnData = [];
+        while ($row = $result->fetch_object()){
+            $returnData[] = $row;
+        }
+        return $returnData;
+    }
 }
 
 ?>
