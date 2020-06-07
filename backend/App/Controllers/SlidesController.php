@@ -15,7 +15,8 @@ class SlidesController extends Controller
         $this->view('Master', [
             'Content' => 'Slides',
             'Title' => 'Quản lý banner website',
-            'data' => $this->model->getSlides()
+            'data' => $this->model->getSlides(),
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 

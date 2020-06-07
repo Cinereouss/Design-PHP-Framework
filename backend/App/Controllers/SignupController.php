@@ -12,7 +12,8 @@ class SignupController extends Controller
 
     public function index(){
         $this->view('Master', [
-            'Content'=>'Signup'
+            'Content'=>'Signup',
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 }

@@ -15,7 +15,8 @@ class DonhangController extends Controller
         $this->view('Master', [
             'Content' => 'Donhang',
             'Title' => 'Đơn hàng ',
-            'data' => $this->model->getDonhang()
+            'data' => $this->model->getDonhang(),
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 }

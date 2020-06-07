@@ -17,6 +17,12 @@ class UserModel extends Model
         return password_verify($password, $result[0]->pass_hash);
     }
 
+    public function getDonhangmoi(){
+        return $this->db->table('donhang')->findWhere([
+                "tinhtrang" => "Chưa xét duyệt",
+        ]);
+    }
+
     public function checkUser($user)
     {
         $result = ($this->db->table('user')->findWhere([

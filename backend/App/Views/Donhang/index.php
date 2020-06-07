@@ -29,8 +29,10 @@
                                 <td style="vertical-align: middle"><?= $item->tinhtrang ?></td>
                                 <td style="vertical-align: middle"><?= func::formatMoney($item->tongtien) . ' vnd' ?></td>
                                 <td style="vertical-align: middle">
-                                    <button class="btn btn-default btn-xs purple nhaphang <?php if($item->tinhtrang === "Đã gửi") echo "hidden";?>" style="color: white!important;"
-                                            value="<?= $item->id ?>" ><i class="fa fa-download"> Xử lý đơn hàng</i></button>
+                                    <a href="Xulydonhang/viewInfor/<?= $item->id ?>">
+                                        <button class="btn btn-default btn-xs purple nhaphang <?php if($item->tinhtrang === "Đã gửi") echo "hidden";?>" style="color: white!important;"
+                                                value="<?= $item->id ?>" ><i class="fa fa-download"> Xử lý đơn hàng</i></button>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -53,46 +55,6 @@
     $('#donhang-span').addClass("selected");
 
     $(document).ready(function () {
-        $('.nhaphang').on('click', function () {
-            var id_product = $(this).val();
-            Swal.fire({
-                title: "Nhập hàng!",
-                text: "Nhập số lượng bạn muốn nhập:",
-                input: 'number',
-                showCancelButton: true,
-                confirmButtonColor: 'green'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url : 'Warehouse/nhaphang',
-                        type : 'post',
-                        data: {
-                            id : id_product,
-                            soluong : result.value
-                        },
-                        success : function () {
-                            if ('true' === 'true') {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'WOW!',
-                                    text: 'Nhập hàng hàng thành công',
-                                }).then(okay => {
-                                    if (okay) {
-                                        location.reload()
-                                    }
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Thất bại, vui lòng liên hệ quản trị viên',
-                                });
-                            }
-                        }
-                    })
-                }
-            });
-        })
     })
 </script>
 <script src="/backend/Public/js/jquery.form.min.js" type="text/javascript"></script>

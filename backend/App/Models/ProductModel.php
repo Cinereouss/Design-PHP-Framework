@@ -53,6 +53,12 @@ class ProductModel extends Model
         ]);
     }
 
+    public function getDonhangmoi(){
+        return $this->db->table('donhang')->findWhere([
+            "tinhtrang" => "Chưa xét duyệt",
+        ]);
+    }
+
     public function deleteProduct($id)
     {
         $imgs = $this->db->table('anhsp')->findWhere([

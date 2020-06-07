@@ -15,7 +15,8 @@ class ContactController extends Controller
         $this->view('Master', [
             'Content' => 'Contact',
             'Title' => 'Quản lý thông tin liên hệ',
-            'data' => $this->model->getContact()
+            'data' => $this->model->getContact(),
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
     public function update()

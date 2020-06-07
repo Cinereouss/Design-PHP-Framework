@@ -14,7 +14,8 @@ class ProductController extends Controller
         $this->view('Master', [
             'Content' => 'Product',
             'Title' => 'Danh mục sản phẩm',
-            'data' => $this->model->getProduct()
+            'data' => $this->model->getProduct(),
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 

@@ -13,7 +13,8 @@ class CreateUserController extends Controller
     {
         $this->view('Master', [
             'Content'=>'CreateUser',
-            'Title'=>'Tạo tài khoản'
+            'Title'=>'Tạo tài khoản',
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 

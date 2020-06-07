@@ -15,7 +15,8 @@ class WarehouseController extends Controller
         $this->view('Master', [
             'Content' => 'Warehouse',
             'Title' => 'Kho hàng',
-            'data' => $this->model->getProductInWarehouse()
+            'data' => $this->model->getProductInWarehouse(),
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 

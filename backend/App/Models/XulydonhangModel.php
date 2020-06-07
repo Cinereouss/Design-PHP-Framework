@@ -1,14 +1,21 @@
 <?php
-class HomeModel{
-    public function test(){
-        return "func tesr";
-    }
 
+
+class XulydonhangModel extends Model
+{
     private $db;
 
     public function __construct()
     {
         $this->db = new Model();
+    }
+
+    public function getDonhangInfo($id)
+    {
+        $result = $this->db->table('Donhang')->findWhere([
+            'id'=>$id
+        ]);
+        return $result;
     }
 
     public function getDonhangmoi(){

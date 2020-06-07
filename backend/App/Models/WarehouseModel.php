@@ -24,6 +24,12 @@ class WarehouseModel
             return $result;
     }
 
+    public function getDonhangmoi(){
+        return $this->db->table('donhang')->findWhere([
+            "tinhtrang" => "Chưa xét duyệt",
+        ]);
+    }
+
     public function nhaphang($id, $soluong){
         $sum = $this->db->table('sanpham')->findWhere([
             'id'=>$id

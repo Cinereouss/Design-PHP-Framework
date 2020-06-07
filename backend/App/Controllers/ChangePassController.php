@@ -13,7 +13,8 @@ class ChangePassController extends Controller
     public function index(){
         $this->view('Master', [
             'Content'=>'ChangePass',
-            'Title'=>'Đổi mật khẩu'
+            'Title'=>'Đổi mật khẩu',
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 

@@ -10,7 +10,8 @@ class HomeController extends Controller{
     public function index(){
         $this->view('Master', [
             'Content'=>'Home',
-            'Title'=>'Trang chủ'
+            'Title'=>'Trang chủ',
+            'Donhang'=>$this->model->getDonhangmoi(),
         ]);
     }
 }

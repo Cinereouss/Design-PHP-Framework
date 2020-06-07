@@ -16,6 +16,12 @@ class SlidesModel extends Model
         return $result;
     }
 
+    public function getDonhangmoi(){
+        return $this->db->table('donhang')->findWhere([
+            "tinhtrang" => "Chưa xét duyệt",
+        ]);
+    }
+
     public function hienthiSlide($id, $gt)
     {
         return $this->db->table('slide')->updateById($id, [

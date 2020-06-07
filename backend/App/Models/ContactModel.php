@@ -16,6 +16,12 @@ class ContactModel extends Model
         return $result;
     }
 
+    public function getDonhangmoi(){
+        return $this->db->table('donhang')->findWhere([
+            "tinhtrang" => "Chưa xét duyệt",
+        ]);
+    }
+
     public function updateInfor($web, $fb, $email, $diachi, $phone, $info){
         return $this->db->table('contact')->updateById(1, [
             'website'=>$web,
