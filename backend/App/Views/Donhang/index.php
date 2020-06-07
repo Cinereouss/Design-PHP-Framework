@@ -22,15 +22,15 @@
                         </thead>
                         <tbody>
                         <?php foreach ($data['data'] as $value => $item) : ?>
-                            <tr style="text-align: center; <?php if($item->tinhtrang === "Đã gửi") echo "background-color : #85ec85"; else echo "background-color : #ef5a5a";?>">
+                            <tr style="text-align: center; <?php if($item->tinhtrang === "Đã gửi") echo "background-color : #85ec85"; elseif($item->tinhtrang === "Đã hủy") echo "background-color : #ef5a5a"; else echo "background-color : #d2f73d";?>">
                                 <td style="vertical-align: middle">#</td>
                                 <td style="vertical-align: middle"><?= $item->ngay ?></td>
                                 <td style="vertical-align: middle"><?= $item->ghichu ?></td>
                                 <td style="vertical-align: middle"><?= $item->tinhtrang ?></td>
                                 <td style="vertical-align: middle"><?= func::formatMoney($item->tongtien) . ' vnd' ?></td>
                                 <td style="vertical-align: middle">
-                                    <a href="Xulydonhang/viewInfor/<?= $item->id ?>">
-                                        <button class="btn btn-default btn-xs purple nhaphang <?php if($item->tinhtrang === "Đã gửi") echo "hidden";?>" style="color: white!important;"
+                                    <a href="Xulydonhang/viewInfor/<?= $item->id ?>" target="_blank">
+                                        <button class="btn btn-default btn-xs purple nhaphang <?php if($item->tinhtrang !== "Chưa xét duyệt") echo "hidden";?>" style="color: white!important;"
                                                 value="<?= $item->id ?>" ><i class="fa fa-download"> Xử lý đơn hàng</i></button>
                                     </a>
                                 </td>
