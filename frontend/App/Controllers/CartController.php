@@ -33,12 +33,12 @@ CartController extends Controller {
         }
 
         foreach ($arrOfChanges as $productId => $productQuantity) {
-            $_SESSION['cart'][$productId]['soluong'] = (int)$productQuantity;
+            $_SESSION['cart'][$productId]['soluongdat'] = (int)$productQuantity;
             $_SESSION['cart'][$productId]['thanhtien'] = (int)$productQuantity * $_SESSION['cart'][$productId]['giasp'];
         }
 
         foreach ($_SESSION['cart'] as $idProduct => $details) {
-            if($details['soluong'] == 0) {
+            if($details['soluongdat'] == 0) {
                 unset($_SESSION['cart'][$idProduct]);
             }
         }

@@ -66,7 +66,7 @@
                     if (isset($_SESSION['cart'])) {
                         foreach ($_SESSION['cart'] as $idProduct => $detail) {
                             echo '<tr>';
-                            echo '<td>'.$detail['ten'].' <span class="product-quantity"><strong> x '.$detail['soluong'].' sản phẩm </strong></span></td>';
+                            echo '<td>'.$detail['ten'].' <span class="product-quantity"><strong> x '.$detail['soluongdat'].' sản phẩm </strong></span></td>';
                             echo '<td><span class="home-price">'.$detail['giasp'].'</span> VNĐ</td>';
                             echo '</tr>';
                         }

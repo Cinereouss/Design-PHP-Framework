@@ -74,7 +74,7 @@ class OrderController extends Controller {
                     $this->model->insertDataToChiTietDonHang ([
                         'sanpham_id' =>  $idProduct,
                         'donhang_id' => $newCreatedDonHangId,
-                        'soluong' => 1
+                        'soluongdat' => 1
                     ]);
                 } else {
                     header('Location: /Error/index');
@@ -100,7 +100,7 @@ class OrderController extends Controller {
             $arrChiTietDonHang = [];
 
             foreach ($_SESSION['cart'] as $idProduct => $detail) {
-                $arrChiTietDonHang[$idProduct] = $detail['soluong'];
+                $arrChiTietDonHang[$idProduct] = $detail['soluongdat'];
             }
 
             $newCreatedKhachHangId =  $this->model->insertDataToKhachHangAndReturnId ([
@@ -120,11 +120,11 @@ class OrderController extends Controller {
                 ]);
 
                 if($newCreatedDonHangId != 0) {
-                    foreach ($arrChiTietDonHang as $idProduct => $soLuong) {
+                    foreach ($arrChiTietDonHang as $idProduct => $soLuongDat) {
                         $this->model->insertDataToChiTietDonHang ([
                             'sanpham_id' =>  $idProduct,
                             'donhang_id' => $newCreatedDonHangId,
-                            'soluong' => $soLuong
+                            'soluongdat' => $soLuongDat
                         ]);
                     }
                 } else {

@@ -55,7 +55,7 @@
                             <?php
                             if (!empty($_SESSION['cart'])) {
                                 foreach ($_SESSION['cart'] as $idProduct => $detail) {
-                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'"><img src="/Public/image/'.$detail['image'].'" alt="img-in-cart" height="70px" width=auto> | '.$detail['ten'].' | <strong> '.$detail['soluong'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
+                                    echo '<a class="dropdown-item" href="/Product/showDetail/'.$idProduct.'"><img src="/Common/image/'.$detail['image'].'" alt="img-in-cart" height="70px" width=auto> | '.$detail['ten'].' | <strong> '.$detail['soluongdat'].' x '.'<span class="home-price">'.$detail['giasp'].'</span>'.' VNĐ</strong></a>';
                                 }
                             } else {
                                 echo '<a class="dropdown-item" href="/Cart/index">Giỏ hàng trống</a>';

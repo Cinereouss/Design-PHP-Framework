@@ -31,15 +31,15 @@ class CartModel extends Model {
                     'image' => $data[0]->image,
                     'ten' => $data[0]->ten,
                     'giasp' => $data[0]->giasp,
-                    'soluong' => $cart[$idProduct]['soluong'] + 1,
-                    'thanhtien' => ($cart[$idProduct]['soluong'] + 1) * $cart[$idProduct]['giasp']
+                    'soluongdat' => $cart[$idProduct]['soluongdat'] + 1,
+                    'thanhtien' => ($cart[$idProduct]['soluongdat'] + 1) * $cart[$idProduct]['giasp']
                 ];
             } else {
                 $cart[$idProduct] = [
                     'image' => $data[0]->image,
                     'ten' => $data[0]->ten,
                     'giasp' => $data[0]->giasp,
-                    'soluong' => 1,
+                    'soluongdat' => 1,
                     'thanhtien' => $data[0]->giasp
                 ];
             }
@@ -49,7 +49,7 @@ class CartModel extends Model {
                 'image' => $data[0]->image,
                 'ten' => $data[0]->ten,
                 'giasp' => $data[0]->giasp,
-                'soluong' => 1,
+                'soluongdat' => 1,
                 'thanhtien' => $data[0]->giasp
             ];
         }

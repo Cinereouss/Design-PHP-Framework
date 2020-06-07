@@ -97,7 +97,7 @@
                         echo '<td><a href="/Product/showDetail/'.$idProduct.'"><img src="/Common/image/'.$details['image'].'" alt="product-image"></a></td>';
                         echo '<td><a href="/Product/showDetail/'.$idProduct.'">'.$details['ten'].'</a></td>';
                         echo '<td><span class="home-price">'.$details['giasp'].'</span> VNĐ</td>';
-                        echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluong'].'" min="0" max="10"></td>';
+                        echo '<td><input id="idProInCart-'.$idProduct.'" style="width: 40px;" type="number" value="'.$details['soluongdat'].'" min="0" max="10"></td>';
                         echo '<td><span class="home-price">'.$details['thanhtien'].'</span> VNĐ</td>';
                         echo '</tr>';
 
