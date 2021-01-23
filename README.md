@@ -1,4 +1,4 @@
-# Btl_LtWeb
+# Thiết kế framword PHP 
 Bài tập lớn
 Để chạy ứng dụng cần config virtual host thông qua xampp
 B1: Chạy file .sql để có CSDL tên nhaccu trong phpMyAdmin
